@@ -1,0 +1,15 @@
+- url: https://cieloazul310.github.io/gatsby-starter-aoi-theme
+  repo: https://github.com/cieloazul310/gatsby-starter-aoi-theme
+  description: A simple responsive Gatsby-Theme Starter build with TypeScript and Material-Design
+  # These correspond to the category filters in the library
+  # See docs/categories.yml for valid tags.
+  tags:
+    - Styling:Material
+    - Language:TypeScript
+    - Linting
+    - Storybook
+  # Add your site features
+  # These will be included on your starter's detail page.
+  features:
+    - MaterialUI Components
+    - Lightweight
