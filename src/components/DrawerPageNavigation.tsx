@@ -1,5 +1,6 @@
 import * as React from 'react';
 import List from '@material-ui/core/List';
+import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
@@ -11,7 +12,7 @@ type Props = Partial<Pick<SitePageContext, 'previous' | 'next'>>;
 
 function DrawerPageNavigation({ previous, next }: Props) {
   return (
-    <List>
+    <List subheader={<ListSubheader>Navigation</ListSubheader>}>
       {previous ? (
         <ListItemAppLink button to={previous.fields.slug}>
           <ListItemIcon>

@@ -1,0 +1,37 @@
+---
+title: Gatsby Starter と Theme
+subtitle: ''
+date: 2020-02-14T10:50:10.771Z
+categories: ['Tutorial']
+author: 'cieloazul310'
+featuredImage: ""
+---
+
+Gatsby Starter と Gatsby Theme の違いについて説明します。
+
+### Gatsby Starter
+
+Gatsby Starter は Gatsby のプロジェクトを始める時に使う
+ただしスターターを使った時点で、そのスターターと分化
+スターターがアップデートしたとしても、もう分化してしまっているので
+
+### Gatsby Theme
+
+対して、Gatsby Theme はモジュールです。
+通常 Gatsby Theme は npm 上にパッケージとして公開されています。
+つまり自分のプロジェクトで `yarn upgrade gatsby-theme-***` とすれば、Gatsby Theme は最新のものに更新されるわけです。
+
+一方で、Gatsby Theme にも難点があります。それは Gatsby Theme の機能が高性能になると、Gatsby Theme 側の求めるプロジェクト構成になっていなければならない。
+
+| フレームワーク | カスタマイズ         | 保守         | 再利用性 |
+| :------------- | :------------------- | :----------- | :---|
+| Gatsby Starter | カスタマイズが容易   | 保守が難しい |  再利用しにくい  |
+| Gatsby Theme   | カスタマイズが難しい | 保守が容易   |  再利用しやすい  |
+
+### Gatsby Aoi Theme
+
+必要最低限の機能
+
+- ベーシックな Layout を作成
+- Material-UI のトップレイアウトを導入
+- ダークモードとグローバルなステートの作成

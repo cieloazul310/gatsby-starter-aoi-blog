@@ -20,11 +20,11 @@ function Contents() {
         </ListItemIcon>
         <ListItemText primary="Top" />
       </ListItemAppLink>
-      <ListItemAppLink to="/example/" button selected={pathname === withPrefix('/example/')} role="menuitem">
+      <ListItemAppLink to="/about/" button selected={pathname === withPrefix('/about/')} role="menuitem">
         <ListItemIcon>
           <SportsHandballIcon />
         </ListItemIcon>
-        <ListItemText primary="Example" />
+        <ListItemText primary="About" />
       </ListItemAppLink>
       <ListItemAppLink to="/blog/" button selected={pathname === withPrefix('/blog/')} role="menuitem">
         <ListItemIcon>

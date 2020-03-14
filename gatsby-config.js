@@ -1,4 +1,5 @@
 const path = require('path');
+const blue = require('@material-ui/core/colors/blue').default;
 
 module.exports = {
   siteMetadata: {
@@ -23,9 +24,11 @@ module.exports = {
       youtube: 'hollytube0310'
     }
   },
-  pathPrefix: '/gatsby-aoi-theme-blog',
+  pathPrefix: '/gatsby-theme-aoi-blog',
   plugins: [
     `gatsby-theme-aoi`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -36,7 +39,7 @@ module.exports = {
         },
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-embed-snippet`,
+            resolve: `gatsby-remark-embed-snippet`
           },
           {
             resolve: `gatsby-remark-prismjs`
@@ -45,7 +48,8 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 800,
-              showCaptions: ['title']
+              showCaptions: ['title'],
+              tracedSVG: true
             }
           }
         ]
@@ -72,14 +76,25 @@ module.exports = {
         name: `assets`
       }
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: 'UA-74683419-3'
       }
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Gatsby Theme Aoi Blog`,
+        short_name: `葵`,
+        start_url: `/`,
+        background_color: blue[100],
+        theme_color: blue[600],
+        display: `standalone`,
+        icon: `src/assets/icon360.png`
+      }
+    },
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-graphql-codegen`,
     // Add typescript stack into webpack
     `gatsby-plugin-typescript`

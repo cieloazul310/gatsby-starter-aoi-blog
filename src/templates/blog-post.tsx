@@ -15,15 +15,21 @@ interface Props {
 }
 
 function BlogPostTemplate({ pageContext, data: { mdx } }: Props) {
-  const { title, date } = mdx.frontmatter;
+  const { title, fullWidth, featuredImage } = mdx.frontmatter;
   const { previous, next } = pageContext;
-
+  
   return (
-    <Layout maxWidth="md" title={title} jumbotron={<Jumbotron title={title} subtitle={date} />} drawerContents={<DrawerPageNavigation previous={previous} next={next} />}>
+    <Layout
+      maxWidth="md"
+      title={title}
+      image={featuredImage ? featuredImage.childImageSharp.fluid.src : null}
+      disableDrawer={fullWidth || false}
+      disableFab={fullWidth || false}
+      jumbotron={<Jumbotron frontmatter={mdx.frontmatter} />}
+      drawerContents={<DrawerPageNavigation previous={previous} next={next} />}
+    >
       <MDXProvider components={muiComponents}>
-        <MDXRenderer>
-          {mdx.body}
-        </MDXRenderer>
+        <MDXRenderer>{mdx.body}</MDXRenderer>
       </MDXProvider>
       <PageNavigation previous={previous} next={next} />
     </Layout>
@@ -39,7 +45,19 @@ export const pageQuery = graphql`
       body
       frontmatter {
         title
-        date
+        subtitle
+        categories
+        date(formatString: "YYYY-MM-DD")
+        author
+        featuredImage {
+          childImageSharp {
+            fluid(maxWidth: 800) {
+              srcSet
+              src
+            }
+          }
+        }
+        fullWidth
       }
     }
   }
