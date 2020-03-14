@@ -1,31 +1,46 @@
 import * as React from 'react';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import { useTheme } from '@material-ui/core/styles';
-import Layout from 'gatsby-theme-aoi/src/layouts/JumbotronLayout';
+import { graphql } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import Layout from 'gatsby-theme-aoi/src/layouts/JumbotronLayout';
+import Jumbotron from '../components/Jumbotron';
+import DrawerPageNavigation from '../components/DrawerPageNavigation';
+import PageNavigation from '../components/PageNavigation';
 import muiComponents from '../utils/muiComponents';
-import { SitePageContext } from '../../graphql-types';
+import { BlogPostQueryQuery, SitePageContext } from '../../graphql-types';
 
 interface Props {
-  children: JSX.Element | JSX.Element[] | (JSX.Element | JSX.Element[])[];
+  data: BlogPostQueryQuery;
   pageContext: SitePageContext;
 }
 
-function BlogPostTemplate({ children, pageContext }: Props) {
-  const paletteType = useTheme().palette.type;
-  const { title, date } = pageContext.frontmatter;
-  const jumbotron = (
-    <Box height={280} p={4} bgcolor={paletteType === 'dark' ? 'background.paper' : 'secondary.light'} display="flex" flexDirection="column" justifyContent="center">
-      <Typography variant="subtitle1">{date}</Typography>
-      <Typography variant="h2">{title}</Typography>
-    </Box>
-  );
+function BlogPostTemplate({ pageContext, data: { mdx } }: Props) {
+  const { title, date } = mdx.frontmatter;
+  const { previous, next } = pageContext;
+
   return (
-    <Layout maxWidth="md" disableDrawer title={pageContext.frontmatter.title} jumbotron={jumbotron}>
-      <MDXProvider components={muiComponents}>{children}</MDXProvider>
+    <Layout maxWidth="md" title={title} jumbotron={<Jumbotron title={title} subtitle={date} />} drawerContents={<DrawerPageNavigation previous={previous} next={next} />}>
+      <MDXProvider components={muiComponents}>
+        <MDXRenderer>
+          {mdx.body}
+        </MDXRenderer>
+      </MDXProvider>
+      <PageNavigation previous={previous} next={next} />
     </Layout>
   );
 }
 
 export default BlogPostTemplate;
+
+export const pageQuery = graphql`
+  query BlogPostQuery($id: String) {
+    mdx(id: { eq: $id }) {
+      id
+      body
+      frontmatter {
+        title
+        date
+      }
+    }
+  }
+`;

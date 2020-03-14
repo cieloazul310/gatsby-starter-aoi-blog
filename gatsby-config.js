@@ -23,22 +23,32 @@ module.exports = {
       youtube: 'hollytube0310'
     }
   },
-  pathPrefix: '/gatsby-starter-aoi-theme',
+  pathPrefix: '/gatsby-aoi-theme-blog',
   plugins: [
     `gatsby-theme-aoi`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
-        defaultLayouts: { default: path.resolve('./src/templates/blog-post.tsx') },
+        defaultLayouts: {
+          default: path.resolve('./src/templates/default.tsx'),
+          blog: path.resolve('./src/templates/blog-post.tsx')
+        },
         gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-embed-snippet`,
+          },
+          {
+            resolve: `gatsby-remark-prismjs`
+          },
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 800
+              maxWidth: 800,
+              showCaptions: ['title']
             }
           }
-        ],
+        ]
       }
     },
     {

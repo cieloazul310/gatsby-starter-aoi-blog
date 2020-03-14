@@ -9,17 +9,17 @@ import Divider from '@material-ui/core/Divider';
 
 const H2 = (props: TypographyProps) => <Typography variant="h2" gutterBottom {...props} />;
 const H3 = (props: Omit<TypographyProps, 'ref'>) => (
-  <Box py={2}>
+  <Box pt={4} pb={2}>
     <Typography variant="h4" component="h3" gutterBottom {...props} />
   </Box>
 );
 const H4 = (props: Omit<TypographyProps, 'ref'>) => (
-  <Box py={1}>
+  <Box pt={2} pb={1}>
     <Typography variant="h5" component="h4" gutterBottom {...props} />
   </Box>
 );
 const H5 = (props: Omit<TypographyProps, 'ref'>) => (
-  <Box py={1}>
+  <Box pt={2} pb={1}>
     <Typography variant="h6" component="h5" gutterBottom {...props} />
   </Box>
 );
@@ -29,6 +29,11 @@ const Link = (props: LinkProps) => <MuiLink color="secondary" {...props} />;
 const Ul = (props: Omit<TypographyProps, 'ref'>) => (
   <Box py={2} m={0}>
     <Typography component="ul" {...props} />
+  </Box>
+);
+const Ol = (props: Omit<TypographyProps, 'ref'>) => (
+  <Box py={2} m={0}>
+    <Typography component="ol" {...props} />
   </Box>
 );
 const Li = (props: Omit<TypographyProps, 'ref'>) => <Typography variant="body1" component="li" {...props} />;
@@ -47,12 +52,13 @@ const components = {
   p: Paragraph,
   a: Link,
   ul: Ul,
+  ol: Ol,
   li: Li,
   table: Table,
   tr: TableRow,
   th: TableCell,
   td: TableCell,
-  hr: Divider
+  hr: Divider,
 };
 
 export default components;
