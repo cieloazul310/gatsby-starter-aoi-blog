@@ -10,7 +10,7 @@ import useAllPosts from '../../utils/useAllPosts';
 function BlogIndexPage() {
   const allPosts = useAllPosts();
   return (
-    <Layout title="Blog" jumbotron={<Jumbotron frontmatter={{ title: "All Post", featuredImage: null }} />}>
+    <Layout title="Blog" jumbotron={<Jumbotron frontmatter={{ title: "All Posts", featuredImage: null }} />}>
       {allPosts.map(({ node }) => (
         <Box py={3} key={node.id}>
           <Typography variant="subtitle1">{node.frontmatter.date}</Typography>

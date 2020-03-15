@@ -30,29 +30,16 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: `gatsby-transformer-json`,
       options: {
-        extensions: [`.mdx`, `.md`],
-        defaultLayouts: {
-          default: path.resolve('./src/templates/default.tsx'),
-          blog: path.resolve('./src/templates/blog-post.tsx')
-        },
-        gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-embed-snippet`
-          },
-          {
-            resolve: `gatsby-remark-prismjs`
-          },
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 800,
-              showCaptions: ['title'],
-              tracedSVG: true
-            }
-          }
-        ]
+        path: `${__dirname}/data`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/data`,
+        name: `data`
       }
     },
     {
@@ -74,6 +61,34 @@ module.exports = {
       options: {
         path: `${__dirname}/content/assets`,
         name: `assets`
+      }
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
+        defaultLayouts: {
+          default: path.resolve('./src/templates/default.tsx'),
+          blog: path.resolve('./src/templates/blog-post.tsx')
+        },
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-embed-snippet`
+          },
+          {
+            resolve: `gatsby-remark-prismjs`
+          },
+          {
+            resolve: `gatsby-remark-relative-images`
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+              showCaptions: ['title']
+            }
+          }
+        ]
       }
     },
     {

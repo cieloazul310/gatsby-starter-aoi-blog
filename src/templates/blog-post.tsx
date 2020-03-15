@@ -48,7 +48,13 @@ export const pageQuery = graphql`
         subtitle
         categories
         date(formatString: "YYYY-MM-DD")
-        author
+        author {
+          id
+          name
+          url
+          twitter
+          facebook
+        }
         featuredImage {
           childImageSharp {
             fluid(maxWidth: 800) {

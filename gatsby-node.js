@@ -1,7 +1,10 @@
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
+const { fmImagesToRelative } = require('gatsby-remark-relative-images');
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
+  fmImagesToRelative(node);
+
   const { createNodeField } = actions;
   // you only want to operate on `Mdx` nodes. If you had content from a
   // remote CMS you could also check to see if the parent node was a
@@ -21,12 +24,45 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 };
 
+exports.createSchemaCustomization = ({ actions, schema }) => {
+  const { createTypes } = actions;
+  const typeDefs = [
+    'type Mdx implements Node { frontmatter: Frontmatter }',
+    schema.buildObjectType({
+      name: 'Frontmatter',
+      fields: {
+        author: {
+          type: 'AuthorsJson',
+          resolve: (source, args, context, info) => {
+            // If you were linking by ID, you could use `getNodeById` to
+            // find the correct author:
+            // return context.nodeModel.getNodeById({
+            //   id: source.author,
+            //   type: "AuthorJson",
+            // })
+            // But since the example is using the author email as foreign key,
+            // you can use `runQuery`, or get all author nodes
+            // with `getAllNodes` and manually find the linked author
+            // node:
+            //return context.nodeModel.getAllNodes({ type: 'AuthorsJson' }).find(author => author.id === source.author);
+            return context.nodeModel.getNodeById({
+              id: source.author,
+              type: 'AuthorsJson'
+            });
+          }
+        }
+      }
+    })
+  ];
+  createTypes(typeDefs);
+};
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
   // Destructure the createPage function from the actions object
   const { createPage } = actions;
   const result = await graphql(`
     query CreateMdxPages {
-      allMdx(sort: {fields: frontmatter___date, order: DESC}, filter: {fileAbsolutePath: {regex: "\\/content/blog/"}}) {
+      allMdx(sort: { fields: frontmatter___date, order: DESC }, filter: { fileAbsolutePath: { regex: "/content/blog/" } }) {
         edges {
           node {
             id

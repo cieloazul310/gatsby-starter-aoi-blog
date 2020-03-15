@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { makeStyles, createStyles, useTheme, Theme } from '@material-ui/core/styles';
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import { MdxFrontmatter } from '../../graphql-types';
+import InlineAuthor from './InlineAuthor';
+import { Frontmatter } from '../../graphql-types';
 
 const useStyles = makeStyles<Theme, { bgImg: string }>((theme: Theme) =>
   createStyles({
@@ -14,7 +15,7 @@ const useStyles = makeStyles<Theme, { bgImg: string }>((theme: Theme) =>
       backgroundSize: 'cover',
       filter: bgImg ? 'blur(8px) brightness(0.8)' : null,
       transform: bgImg ? 'scale(1.1)' : null,
-      transition: theme.transitions.create("background")
+      //transition: theme.transitions.create("background")
     }),
     jumbotronText: {
       height: 280,
@@ -34,7 +35,7 @@ const useStyles = makeStyles<Theme, { bgImg: string }>((theme: Theme) =>
 );
 
 interface Props {
-  frontmatter: MdxFrontmatter;
+  frontmatter: Frontmatter;
 }
 
 function Jumbotron({ frontmatter: { title, date, subtitle, author, featuredImage } }: Props) {
@@ -45,7 +46,7 @@ function Jumbotron({ frontmatter: { title, date, subtitle, author, featuredImage
       <Box className={classes.jumbotronBg} />
       <Box className={classes.jumbotronText}>
         <Typography variant="subtitle2">
-          <time>{date}</time>  post by {author}
+          <time>{date}</time>  {author ? <InlineAuthor author={author} /> : null}
         </Typography>
         <Typography variant="h2" className={classes.jumbotronTitle}>
           {title}

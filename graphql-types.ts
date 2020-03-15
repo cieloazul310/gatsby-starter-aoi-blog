@@ -25,6 +25,165 @@ export type Scalars = {
 
 
 
+export type AuthorsJson = Node & {
+  id: Scalars['ID'],
+  parent?: Maybe<Node>,
+  children: Array<Node>,
+  internal: Internal,
+  name?: Maybe<Scalars['String']>,
+  url?: Maybe<Scalars['String']>,
+  twitter?: Maybe<Scalars['String']>,
+  facebook?: Maybe<Scalars['String']>,
+};
+
+export type AuthorsJsonConnection = {
+  totalCount: Scalars['Int'],
+  edges: Array<AuthorsJsonEdge>,
+  nodes: Array<AuthorsJson>,
+  pageInfo: PageInfo,
+  distinct: Array<Scalars['String']>,
+  group: Array<AuthorsJsonGroupConnection>,
+};
+
+
+export type AuthorsJsonConnectionDistinctArgs = {
+  field: AuthorsJsonFieldsEnum
+};
+
+
+export type AuthorsJsonConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>,
+  limit?: Maybe<Scalars['Int']>,
+  field: AuthorsJsonFieldsEnum
+};
+
+export type AuthorsJsonEdge = {
+  next?: Maybe<AuthorsJson>,
+  node: AuthorsJson,
+  previous?: Maybe<AuthorsJson>,
+};
+
+export type AuthorsJsonFieldsEnum = 
+  'id' |
+  'parent___id' |
+  'parent___parent___id' |
+  'parent___parent___parent___id' |
+  'parent___parent___parent___children' |
+  'parent___parent___children' |
+  'parent___parent___children___id' |
+  'parent___parent___children___children' |
+  'parent___parent___internal___content' |
+  'parent___parent___internal___contentDigest' |
+  'parent___parent___internal___description' |
+  'parent___parent___internal___fieldOwners' |
+  'parent___parent___internal___ignoreType' |
+  'parent___parent___internal___mediaType' |
+  'parent___parent___internal___owner' |
+  'parent___parent___internal___type' |
+  'parent___children' |
+  'parent___children___id' |
+  'parent___children___parent___id' |
+  'parent___children___parent___children' |
+  'parent___children___children' |
+  'parent___children___children___id' |
+  'parent___children___children___children' |
+  'parent___children___internal___content' |
+  'parent___children___internal___contentDigest' |
+  'parent___children___internal___description' |
+  'parent___children___internal___fieldOwners' |
+  'parent___children___internal___ignoreType' |
+  'parent___children___internal___mediaType' |
+  'parent___children___internal___owner' |
+  'parent___children___internal___type' |
+  'parent___internal___content' |
+  'parent___internal___contentDigest' |
+  'parent___internal___description' |
+  'parent___internal___fieldOwners' |
+  'parent___internal___ignoreType' |
+  'parent___internal___mediaType' |
+  'parent___internal___owner' |
+  'parent___internal___type' |
+  'children' |
+  'children___id' |
+  'children___parent___id' |
+  'children___parent___parent___id' |
+  'children___parent___parent___children' |
+  'children___parent___children' |
+  'children___parent___children___id' |
+  'children___parent___children___children' |
+  'children___parent___internal___content' |
+  'children___parent___internal___contentDigest' |
+  'children___parent___internal___description' |
+  'children___parent___internal___fieldOwners' |
+  'children___parent___internal___ignoreType' |
+  'children___parent___internal___mediaType' |
+  'children___parent___internal___owner' |
+  'children___parent___internal___type' |
+  'children___children' |
+  'children___children___id' |
+  'children___children___parent___id' |
+  'children___children___parent___children' |
+  'children___children___children' |
+  'children___children___children___id' |
+  'children___children___children___children' |
+  'children___children___internal___content' |
+  'children___children___internal___contentDigest' |
+  'children___children___internal___description' |
+  'children___children___internal___fieldOwners' |
+  'children___children___internal___ignoreType' |
+  'children___children___internal___mediaType' |
+  'children___children___internal___owner' |
+  'children___children___internal___type' |
+  'children___internal___content' |
+  'children___internal___contentDigest' |
+  'children___internal___description' |
+  'children___internal___fieldOwners' |
+  'children___internal___ignoreType' |
+  'children___internal___mediaType' |
+  'children___internal___owner' |
+  'children___internal___type' |
+  'internal___content' |
+  'internal___contentDigest' |
+  'internal___description' |
+  'internal___fieldOwners' |
+  'internal___ignoreType' |
+  'internal___mediaType' |
+  'internal___owner' |
+  'internal___type' |
+  'name' |
+  'url' |
+  'twitter' |
+  'facebook';
+
+export type AuthorsJsonFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>,
+  parent?: Maybe<NodeFilterInput>,
+  children?: Maybe<NodeFilterListInput>,
+  internal?: Maybe<InternalFilterInput>,
+  name?: Maybe<StringQueryOperatorInput>,
+  url?: Maybe<StringQueryOperatorInput>,
+  twitter?: Maybe<StringQueryOperatorInput>,
+  facebook?: Maybe<StringQueryOperatorInput>,
+};
+
+export type AuthorsJsonFilterListInput = {
+  elemMatch?: Maybe<AuthorsJsonFilterInput>,
+};
+
+export type AuthorsJsonGroupConnection = {
+  totalCount: Scalars['Int'],
+  edges: Array<AuthorsJsonEdge>,
+  nodes: Array<AuthorsJson>,
+  pageInfo: PageInfo,
+  field: Scalars['String'],
+  fieldValue?: Maybe<Scalars['String']>,
+};
+
+export type AuthorsJsonSortInput = {
+  fields?: Maybe<Array<Maybe<AuthorsJsonFieldsEnum>>>,
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>,
+};
+
 export type BooleanQueryOperatorInput = {
   eq?: Maybe<Scalars['Boolean']>,
   ne?: Maybe<Scalars['Boolean']>,
@@ -389,6 +548,7 @@ export type File = Node & {
   parent?: Maybe<Node>,
   children: Array<Node>,
   internal: Internal,
+  childrenAuthorsJson?: Maybe<Array<Maybe<AuthorsJson>>>,
   childMdx?: Maybe<Mdx>,
 };
 
@@ -687,12 +847,60 @@ export type FileFieldsEnum =
   'internal___mediaType' |
   'internal___owner' |
   'internal___type' |
+  'childrenAuthorsJson' |
+  'childrenAuthorsJson___id' |
+  'childrenAuthorsJson___parent___id' |
+  'childrenAuthorsJson___parent___parent___id' |
+  'childrenAuthorsJson___parent___parent___children' |
+  'childrenAuthorsJson___parent___children' |
+  'childrenAuthorsJson___parent___children___id' |
+  'childrenAuthorsJson___parent___children___children' |
+  'childrenAuthorsJson___parent___internal___content' |
+  'childrenAuthorsJson___parent___internal___contentDigest' |
+  'childrenAuthorsJson___parent___internal___description' |
+  'childrenAuthorsJson___parent___internal___fieldOwners' |
+  'childrenAuthorsJson___parent___internal___ignoreType' |
+  'childrenAuthorsJson___parent___internal___mediaType' |
+  'childrenAuthorsJson___parent___internal___owner' |
+  'childrenAuthorsJson___parent___internal___type' |
+  'childrenAuthorsJson___children' |
+  'childrenAuthorsJson___children___id' |
+  'childrenAuthorsJson___children___parent___id' |
+  'childrenAuthorsJson___children___parent___children' |
+  'childrenAuthorsJson___children___children' |
+  'childrenAuthorsJson___children___children___id' |
+  'childrenAuthorsJson___children___children___children' |
+  'childrenAuthorsJson___children___internal___content' |
+  'childrenAuthorsJson___children___internal___contentDigest' |
+  'childrenAuthorsJson___children___internal___description' |
+  'childrenAuthorsJson___children___internal___fieldOwners' |
+  'childrenAuthorsJson___children___internal___ignoreType' |
+  'childrenAuthorsJson___children___internal___mediaType' |
+  'childrenAuthorsJson___children___internal___owner' |
+  'childrenAuthorsJson___children___internal___type' |
+  'childrenAuthorsJson___internal___content' |
+  'childrenAuthorsJson___internal___contentDigest' |
+  'childrenAuthorsJson___internal___description' |
+  'childrenAuthorsJson___internal___fieldOwners' |
+  'childrenAuthorsJson___internal___ignoreType' |
+  'childrenAuthorsJson___internal___mediaType' |
+  'childrenAuthorsJson___internal___owner' |
+  'childrenAuthorsJson___internal___type' |
+  'childrenAuthorsJson___name' |
+  'childrenAuthorsJson___url' |
+  'childrenAuthorsJson___twitter' |
+  'childrenAuthorsJson___facebook' |
   'childMdx___rawBody' |
   'childMdx___fileAbsolutePath' |
+  'childMdx___frontmatter___author___id' |
+  'childMdx___frontmatter___author___children' |
+  'childMdx___frontmatter___author___name' |
+  'childMdx___frontmatter___author___url' |
+  'childMdx___frontmatter___author___twitter' |
+  'childMdx___frontmatter___author___facebook' |
   'childMdx___frontmatter___title' |
   'childMdx___frontmatter___date' |
   'childMdx___frontmatter___categories' |
-  'childMdx___frontmatter___author' |
   'childMdx___frontmatter___featuredImage___sourceInstanceName' |
   'childMdx___frontmatter___featuredImage___absolutePath' |
   'childMdx___frontmatter___featuredImage___relativePath' |
@@ -729,6 +937,7 @@ export type FileFieldsEnum =
   'childMdx___frontmatter___featuredImage___publicURL' |
   'childMdx___frontmatter___featuredImage___id' |
   'childMdx___frontmatter___featuredImage___children' |
+  'childMdx___frontmatter___featuredImage___childrenAuthorsJson' |
   'childMdx___frontmatter___fullWidth' |
   'childMdx___frontmatter___subtitle' |
   'childMdx___body' |
@@ -823,6 +1032,7 @@ export type FileFilterInput = {
   parent?: Maybe<NodeFilterInput>,
   children?: Maybe<NodeFilterListInput>,
   internal?: Maybe<InternalFilterInput>,
+  childrenAuthorsJson?: Maybe<AuthorsJsonFilterListInput>,
   childMdx?: Maybe<MdxFilterInput>,
 };
 
@@ -849,6 +1059,34 @@ export type FloatQueryOperatorInput = {
   lte?: Maybe<Scalars['Float']>,
   in?: Maybe<Array<Maybe<Scalars['Float']>>>,
   nin?: Maybe<Array<Maybe<Scalars['Float']>>>,
+};
+
+export type Frontmatter = {
+  author?: Maybe<AuthorsJson>,
+  title?: Maybe<Scalars['String']>,
+  date?: Maybe<Scalars['Date']>,
+  categories?: Maybe<Array<Maybe<Scalars['String']>>>,
+  featuredImage?: Maybe<File>,
+  fullWidth?: Maybe<Scalars['Boolean']>,
+  subtitle?: Maybe<Scalars['String']>,
+};
+
+
+export type FrontmatterDateArgs = {
+  formatString?: Maybe<Scalars['String']>,
+  fromNow?: Maybe<Scalars['Boolean']>,
+  difference?: Maybe<Scalars['String']>,
+  locale?: Maybe<Scalars['String']>
+};
+
+export type FrontmatterFilterInput = {
+  author?: Maybe<AuthorsJsonFilterInput>,
+  title?: Maybe<StringQueryOperatorInput>,
+  date?: Maybe<DateQueryOperatorInput>,
+  categories?: Maybe<StringQueryOperatorInput>,
+  featuredImage?: Maybe<FileFilterInput>,
+  fullWidth?: Maybe<BooleanQueryOperatorInput>,
+  subtitle?: Maybe<StringQueryOperatorInput>,
 };
 
 export type HeadingsMdx = 
@@ -1400,7 +1638,7 @@ export type JsonQueryOperatorInput = {
 export type Mdx = Node & {
   rawBody: Scalars['String'],
   fileAbsolutePath: Scalars['String'],
-  frontmatter?: Maybe<MdxFrontmatter>,
+  frontmatter?: Maybe<Frontmatter>,
   body: Scalars['String'],
   excerpt: Scalars['String'],
   headings?: Maybe<Array<Maybe<MdxHeadingMdx>>>,
@@ -1465,10 +1703,27 @@ export type MdxFields = {
 export type MdxFieldsEnum = 
   'rawBody' |
   'fileAbsolutePath' |
+  'frontmatter___author___id' |
+  'frontmatter___author___parent___id' |
+  'frontmatter___author___parent___children' |
+  'frontmatter___author___children' |
+  'frontmatter___author___children___id' |
+  'frontmatter___author___children___children' |
+  'frontmatter___author___internal___content' |
+  'frontmatter___author___internal___contentDigest' |
+  'frontmatter___author___internal___description' |
+  'frontmatter___author___internal___fieldOwners' |
+  'frontmatter___author___internal___ignoreType' |
+  'frontmatter___author___internal___mediaType' |
+  'frontmatter___author___internal___owner' |
+  'frontmatter___author___internal___type' |
+  'frontmatter___author___name' |
+  'frontmatter___author___url' |
+  'frontmatter___author___twitter' |
+  'frontmatter___author___facebook' |
   'frontmatter___title' |
   'frontmatter___date' |
   'frontmatter___categories' |
-  'frontmatter___author' |
   'frontmatter___featuredImage___sourceInstanceName' |
   'frontmatter___featuredImage___absolutePath' |
   'frontmatter___featuredImage___relativePath' |
@@ -1519,6 +1774,13 @@ export type MdxFieldsEnum =
   'frontmatter___featuredImage___internal___mediaType' |
   'frontmatter___featuredImage___internal___owner' |
   'frontmatter___featuredImage___internal___type' |
+  'frontmatter___featuredImage___childrenAuthorsJson' |
+  'frontmatter___featuredImage___childrenAuthorsJson___id' |
+  'frontmatter___featuredImage___childrenAuthorsJson___children' |
+  'frontmatter___featuredImage___childrenAuthorsJson___name' |
+  'frontmatter___featuredImage___childrenAuthorsJson___url' |
+  'frontmatter___featuredImage___childrenAuthorsJson___twitter' |
+  'frontmatter___featuredImage___childrenAuthorsJson___facebook' |
   'frontmatter___featuredImage___childMdx___rawBody' |
   'frontmatter___featuredImage___childMdx___fileAbsolutePath' |
   'frontmatter___featuredImage___childMdx___body' |
@@ -1639,7 +1901,7 @@ export type MdxFieldsFilterInput = {
 export type MdxFilterInput = {
   rawBody?: Maybe<StringQueryOperatorInput>,
   fileAbsolutePath?: Maybe<StringQueryOperatorInput>,
-  frontmatter?: Maybe<MdxFrontmatterFilterInput>,
+  frontmatter?: Maybe<FrontmatterFilterInput>,
   body?: Maybe<StringQueryOperatorInput>,
   excerpt?: Maybe<StringQueryOperatorInput>,
   headings?: Maybe<MdxHeadingMdxFilterListInput>,
@@ -1657,30 +1919,6 @@ export type MdxFilterInput = {
 
 export type MdxFrontmatter = {
   title: Scalars['String'],
-  date?: Maybe<Scalars['Date']>,
-  categories?: Maybe<Array<Maybe<Scalars['String']>>>,
-  author?: Maybe<Scalars['String']>,
-  featuredImage?: Maybe<File>,
-  fullWidth?: Maybe<Scalars['Boolean']>,
-  subtitle?: Maybe<Scalars['String']>,
-};
-
-
-export type MdxFrontmatterDateArgs = {
-  formatString?: Maybe<Scalars['String']>,
-  fromNow?: Maybe<Scalars['Boolean']>,
-  difference?: Maybe<Scalars['String']>,
-  locale?: Maybe<Scalars['String']>
-};
-
-export type MdxFrontmatterFilterInput = {
-  title?: Maybe<StringQueryOperatorInput>,
-  date?: Maybe<DateQueryOperatorInput>,
-  categories?: Maybe<StringQueryOperatorInput>,
-  author?: Maybe<StringQueryOperatorInput>,
-  featuredImage?: Maybe<FileFilterInput>,
-  fullWidth?: Maybe<BooleanQueryOperatorInput>,
-  subtitle?: Maybe<StringQueryOperatorInput>,
 };
 
 export type MdxGroupConnection = {
@@ -1784,6 +2022,8 @@ export type Query = {
   allImageSharp: ImageSharpConnection,
   mdx?: Maybe<Mdx>,
   allMdx: MdxConnection,
+  authorsJson?: Maybe<AuthorsJson>,
+  allAuthorsJson: AuthorsJsonConnection,
   siteBuildMetadata?: Maybe<SiteBuildMetadata>,
   allSiteBuildMetadata: SiteBuildMetadataConnection,
   sitePlugin?: Maybe<SitePlugin>,
@@ -1831,6 +2071,7 @@ export type QueryFileArgs = {
   parent?: Maybe<NodeFilterInput>,
   children?: Maybe<NodeFilterListInput>,
   internal?: Maybe<InternalFilterInput>,
+  childrenAuthorsJson?: Maybe<AuthorsJsonFilterListInput>,
   childMdx?: Maybe<MdxFilterInput>
 };
 
@@ -1921,6 +2162,8 @@ export type QueryAllSitePageArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>,
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>,
+  port?: Maybe<IntQueryOperatorInput>,
+  host?: Maybe<StringQueryOperatorInput>,
   pathPrefix?: Maybe<StringQueryOperatorInput>,
   polyfill?: Maybe<BooleanQueryOperatorInput>,
   id?: Maybe<StringQueryOperatorInput>,
@@ -1963,7 +2206,7 @@ export type QueryAllImageSharpArgs = {
 export type QueryMdxArgs = {
   rawBody?: Maybe<StringQueryOperatorInput>,
   fileAbsolutePath?: Maybe<StringQueryOperatorInput>,
-  frontmatter?: Maybe<MdxFrontmatterFilterInput>,
+  frontmatter?: Maybe<FrontmatterFilterInput>,
   body?: Maybe<StringQueryOperatorInput>,
   excerpt?: Maybe<StringQueryOperatorInput>,
   headings?: Maybe<MdxHeadingMdxFilterListInput>,
@@ -1983,6 +2226,26 @@ export type QueryMdxArgs = {
 export type QueryAllMdxArgs = {
   filter?: Maybe<MdxFilterInput>,
   sort?: Maybe<MdxSortInput>,
+  skip?: Maybe<Scalars['Int']>,
+  limit?: Maybe<Scalars['Int']>
+};
+
+
+export type QueryAuthorsJsonArgs = {
+  id?: Maybe<StringQueryOperatorInput>,
+  parent?: Maybe<NodeFilterInput>,
+  children?: Maybe<NodeFilterListInput>,
+  internal?: Maybe<InternalFilterInput>,
+  name?: Maybe<StringQueryOperatorInput>,
+  url?: Maybe<StringQueryOperatorInput>,
+  twitter?: Maybe<StringQueryOperatorInput>,
+  facebook?: Maybe<StringQueryOperatorInput>
+};
+
+
+export type QueryAllAuthorsJsonArgs = {
+  filter?: Maybe<AuthorsJsonFilterInput>,
+  sort?: Maybe<AuthorsJsonSortInput>,
   skip?: Maybe<Scalars['Int']>,
   limit?: Maybe<Scalars['Int']>
 };
@@ -2032,6 +2295,8 @@ export type QueryAllSitePluginArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>,
   siteMetadata?: Maybe<SiteSiteMetadata>,
+  port?: Maybe<Scalars['Int']>,
+  host?: Maybe<Scalars['String']>,
   pathPrefix?: Maybe<Scalars['String']>,
   polyfill?: Maybe<Scalars['Boolean']>,
   id: Scalars['ID'],
@@ -2249,6 +2514,8 @@ export type SiteFieldsEnum =
   'siteMetadata___social___vimeo' |
   'siteMetadata___social___youtube' |
   'siteMetadata___siteUrl' |
+  'port' |
+  'host' |
   'pathPrefix' |
   'polyfill' |
   'id' |
@@ -2341,6 +2608,8 @@ export type SiteFieldsEnum =
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>,
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>,
+  port?: Maybe<IntQueryOperatorInput>,
+  host?: Maybe<StringQueryOperatorInput>,
   pathPrefix?: Maybe<StringQueryOperatorInput>,
   polyfill?: Maybe<BooleanQueryOperatorInput>,
   id?: Maybe<StringQueryOperatorInput>,
@@ -2625,13 +2894,13 @@ export type SitePageFieldsEnum =
   'pluginCreator___pluginOptions___fonts' |
   'pluginCreator___pluginOptions___fonts___family' |
   'pluginCreator___pluginOptions___utilPath' |
+  'pluginCreator___pluginOptions___path' |
+  'pluginCreator___pluginOptions___name' |
   'pluginCreator___pluginOptions___extensions' |
   'pluginCreator___pluginOptions___defaultLayouts___default' |
   'pluginCreator___pluginOptions___defaultLayouts___blog' |
   'pluginCreator___pluginOptions___gatsbyRemarkPlugins' |
   'pluginCreator___pluginOptions___gatsbyRemarkPlugins___resolve' |
-  'pluginCreator___pluginOptions___path' |
-  'pluginCreator___pluginOptions___name' |
   'pluginCreator___pluginOptions___trackingId' |
   'pluginCreator___pluginOptions___short_name' |
   'pluginCreator___pluginOptions___start_url' |
@@ -2830,6 +3099,8 @@ export type SitePluginFieldsEnum =
   'pluginOptions___fonts' |
   'pluginOptions___fonts___family' |
   'pluginOptions___utilPath' |
+  'pluginOptions___path' |
+  'pluginOptions___name' |
   'pluginOptions___extensions' |
   'pluginOptions___defaultLayouts___default' |
   'pluginOptions___defaultLayouts___blog' |
@@ -2837,18 +3108,16 @@ export type SitePluginFieldsEnum =
   'pluginOptions___gatsbyRemarkPlugins___resolve' |
   'pluginOptions___gatsbyRemarkPlugins___options___maxWidth' |
   'pluginOptions___gatsbyRemarkPlugins___options___showCaptions' |
-  'pluginOptions___gatsbyRemarkPlugins___options___tracedSVG' |
   'pluginOptions___gatsbyRemarkPlugins___options___pathPrefix' |
   'pluginOptions___gatsbyRemarkPlugins___options___wrapperStyle' |
   'pluginOptions___gatsbyRemarkPlugins___options___backgroundColor' |
   'pluginOptions___gatsbyRemarkPlugins___options___linkImagesToOriginal' |
   'pluginOptions___gatsbyRemarkPlugins___options___markdownCaptions' |
   'pluginOptions___gatsbyRemarkPlugins___options___withWebp' |
+  'pluginOptions___gatsbyRemarkPlugins___options___tracedSVG' |
   'pluginOptions___gatsbyRemarkPlugins___options___loading' |
   'pluginOptions___gatsbyRemarkPlugins___options___disableBgImageOnAlpha' |
   'pluginOptions___gatsbyRemarkPlugins___options___disableBgImage' |
-  'pluginOptions___path' |
-  'pluginOptions___name' |
   'pluginOptions___trackingId' |
   'pluginOptions___short_name' |
   'pluginOptions___start_url' |
@@ -2974,11 +3243,11 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 export type SitePluginPluginOptions = {
   fonts?: Maybe<Array<Maybe<SitePluginPluginOptionsFonts>>>,
   utilPath?: Maybe<Scalars['String']>,
+  path?: Maybe<Scalars['String']>,
+  name?: Maybe<Scalars['String']>,
   extensions?: Maybe<Array<Maybe<Scalars['String']>>>,
   defaultLayouts?: Maybe<SitePluginPluginOptionsDefaultLayouts>,
   gatsbyRemarkPlugins?: Maybe<Array<Maybe<SitePluginPluginOptionsGatsbyRemarkPlugins>>>,
-  path?: Maybe<Scalars['String']>,
-  name?: Maybe<Scalars['String']>,
   trackingId?: Maybe<Scalars['String']>,
   short_name?: Maybe<Scalars['String']>,
   start_url?: Maybe<Scalars['String']>,
@@ -3002,11 +3271,11 @@ export type SitePluginPluginOptionsDefaultLayoutsFilterInput = {
 export type SitePluginPluginOptionsFilterInput = {
   fonts?: Maybe<SitePluginPluginOptionsFontsFilterListInput>,
   utilPath?: Maybe<StringQueryOperatorInput>,
+  path?: Maybe<StringQueryOperatorInput>,
+  name?: Maybe<StringQueryOperatorInput>,
   extensions?: Maybe<StringQueryOperatorInput>,
   defaultLayouts?: Maybe<SitePluginPluginOptionsDefaultLayoutsFilterInput>,
   gatsbyRemarkPlugins?: Maybe<SitePluginPluginOptionsGatsbyRemarkPluginsFilterListInput>,
-  path?: Maybe<StringQueryOperatorInput>,
-  name?: Maybe<StringQueryOperatorInput>,
   trackingId?: Maybe<StringQueryOperatorInput>,
   short_name?: Maybe<StringQueryOperatorInput>,
   start_url?: Maybe<StringQueryOperatorInput>,
@@ -3046,13 +3315,13 @@ export type SitePluginPluginOptionsGatsbyRemarkPluginsFilterListInput = {
 export type SitePluginPluginOptionsGatsbyRemarkPluginsOptions = {
   maxWidth?: Maybe<Scalars['Int']>,
   showCaptions?: Maybe<Array<Maybe<Scalars['String']>>>,
-  tracedSVG?: Maybe<Scalars['Boolean']>,
   pathPrefix?: Maybe<Scalars['String']>,
   wrapperStyle?: Maybe<Scalars['String']>,
   backgroundColor?: Maybe<Scalars['String']>,
   linkImagesToOriginal?: Maybe<Scalars['Boolean']>,
   markdownCaptions?: Maybe<Scalars['Boolean']>,
   withWebp?: Maybe<Scalars['Boolean']>,
+  tracedSVG?: Maybe<Scalars['Boolean']>,
   loading?: Maybe<Scalars['String']>,
   disableBgImageOnAlpha?: Maybe<Scalars['Boolean']>,
   disableBgImage?: Maybe<Scalars['Boolean']>,
@@ -3061,13 +3330,13 @@ export type SitePluginPluginOptionsGatsbyRemarkPluginsOptions = {
 export type SitePluginPluginOptionsGatsbyRemarkPluginsOptionsFilterInput = {
   maxWidth?: Maybe<IntQueryOperatorInput>,
   showCaptions?: Maybe<StringQueryOperatorInput>,
-  tracedSVG?: Maybe<BooleanQueryOperatorInput>,
   pathPrefix?: Maybe<StringQueryOperatorInput>,
   wrapperStyle?: Maybe<StringQueryOperatorInput>,
   backgroundColor?: Maybe<StringQueryOperatorInput>,
   linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>,
   markdownCaptions?: Maybe<BooleanQueryOperatorInput>,
   withWebp?: Maybe<BooleanQueryOperatorInput>,
+  tracedSVG?: Maybe<BooleanQueryOperatorInput>,
   loading?: Maybe<StringQueryOperatorInput>,
   disableBgImageOnAlpha?: Maybe<BooleanQueryOperatorInput>,
   disableBgImage?: Maybe<BooleanQueryOperatorInput>,
@@ -3154,8 +3423,8 @@ export type BlogPostQueryQueryVariables = {
 export type BlogPostQueryQuery = { mdx: Maybe<(
     Pick<Mdx, 'id' | 'body'>
     & { frontmatter: Maybe<(
-      Pick<MdxFrontmatter, 'title' | 'subtitle' | 'categories' | 'date' | 'author' | 'fullWidth'>
-      & { featuredImage: Maybe<{ childImageSharp: Maybe<{ fluid: Maybe<Pick<ImageSharpFluid, 'srcSet' | 'src'>> }> }> }
+      Pick<Frontmatter, 'title' | 'subtitle' | 'categories' | 'date' | 'fullWidth'>
+      & { author: Maybe<Pick<AuthorsJson, 'id' | 'name' | 'url' | 'twitter' | 'facebook'>>, featuredImage: Maybe<{ childImageSharp: Maybe<{ fluid: Maybe<Pick<ImageSharpFluid, 'srcSet' | 'src'>> }> }> }
     )> }
   )> };
 
@@ -3164,5 +3433,5 @@ export type AllPostsQueryVariables = {};
 
 export type AllPostsQuery = { allMdx: { edges: Array<{ node: (
         Pick<Mdx, 'id'>
-        & { fields: Maybe<Pick<MdxFields, 'slug'>>, frontmatter: Maybe<Pick<MdxFrontmatter, 'title' | 'date' | 'categories'>> }
+        & { fields: Maybe<Pick<MdxFields, 'slug'>>, frontmatter: Maybe<Pick<Frontmatter, 'title' | 'date' | 'categories'>> }
       ) }> } };
