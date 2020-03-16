@@ -17,14 +17,17 @@ interface Props {
 function BlogPostTemplate({ pageContext, data: { mdx } }: Props) {
   const { title, fullWidth, featuredImage } = mdx.frontmatter;
   const { previous, next } = pageContext;
+  const componentViewports = {
+    Fab: fullWidth ? true : 'smDown',
+    PermanentDrawer: fullWidth ? false : 'mdUp'
+  };
   
   return (
     <Layout
       maxWidth="md"
       title={title}
       image={featuredImage ? featuredImage.childImageSharp.fluid.src : null}
-      disableDrawer={fullWidth || false}
-      disableFab={fullWidth || false}
+      componentViewports={componentViewports}
       jumbotron={<Jumbotron frontmatter={mdx.frontmatter} />}
       drawerContents={<DrawerPageNavigation previous={previous} next={next} />}
     >
@@ -53,7 +56,7 @@ export const pageQuery = graphql`
           name
           url
           twitter
-          facebook
+          github
         }
         featuredImage {
           childImageSharp {

@@ -44,11 +44,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
             // you can use `runQuery`, or get all author nodes
             // with `getAllNodes` and manually find the linked author
             // node:
-            //return context.nodeModel.getAllNodes({ type: 'AuthorsJson' }).find(author => author.id === source.author);
-            return context.nodeModel.getNodeById({
-              id: source.author,
-              type: 'AuthorsJson'
-            });
+            return context.nodeModel.getAllNodes({ type: 'AuthorsJson' }).find(author => author.name === source.author);
           }
         }
       }

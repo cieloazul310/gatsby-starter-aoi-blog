@@ -16,6 +16,9 @@ function useAllPosts() {
               title
               date(formatString: "YYYY-MM-DD")
               categories
+              author {
+                name
+              }
             }
           }
         }

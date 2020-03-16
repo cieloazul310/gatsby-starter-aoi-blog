@@ -6,21 +6,21 @@ module.exports = {
     title: `Gatsby Aoi Theme Blog`,
     description: 'A GatsbyJS starter using Gatsby Aoi Theme based on Material Design written with TypeScript.',
     lang: '',
-    siteUrl: 'https://cieloazul310.github.io/gatsby-theme-aoi-blog/',
+    siteUrl: 'https://cieloazul310.github.io/gatsby-theme-aoi-blog',
     author: 'cieloazul310',
     keywords: ['Gatsby', 'TypeScript', 'Material-UI'],
     social: {
-      mail: 'mail@cieloazul310.com',
+      mail: '',
       twitter: 'hollyhock_staff',
       github: 'cieloazul310',
       facebook: 'hollyhock.official',
       gitlab: '',
       linkedin: '',
-      medium: 'cieloazul310',
-      pocket: 'cieloazul310',
-      tumblr: 'cieloazul310',
+      medium: '',
+      pocket: '',
+      tumblr: '',
       instagram: 'mito.hollyhock.official',
-      vimeo: 'cieloazul310',
+      vimeo: '',
       youtube: 'hollytube0310'
     }
   },
@@ -109,6 +109,7 @@ module.exports = {
         icon: `src/assets/icon360.png`
       }
     },
+    `gatsby-plugin-offline`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-graphql-codegen`,
     // Add typescript stack into webpack

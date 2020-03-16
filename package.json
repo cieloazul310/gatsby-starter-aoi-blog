@@ -17,6 +17,7 @@
     "gatsby-plugin-graphql-codegen": "^2.2.2",
     "gatsby-plugin-manifest": "^2.2.47",
     "gatsby-plugin-mdx": "^1.0.82",
+    "gatsby-plugin-offline": "^3.0.40",
     "gatsby-plugin-sharp": "^2.4.12",
     "gatsby-plugin-sitemap": "^2.2.29",
     "gatsby-plugin-typescript": "^2.0.9",

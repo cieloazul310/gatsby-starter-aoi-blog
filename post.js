@@ -37,14 +37,14 @@ fs.writeFile(path.resolve(`${basePath}${year}/${month}/${slug}/index.mdx`), arch
 
 function archetypes(date, slug) {
   return [
-    '---', 
+    '---',
     `title: ${slug}`,
-     `subtitle: ""`, 
-     `date: ${date.toISOString()}`,
-    `categories: []`, 
-    `author: ""`, 
-    `coverImage: ""`,
-    '---', 
+    `#subtitle: ""`,
+    `date: ${date.toISOString()}`,
+    `categories: []`,
+    `author: ""`,
+    `#featuredImage: ""`,
+    '---',
     ''
   ].join('\n');
 }
