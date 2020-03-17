@@ -30,7 +30,7 @@ function Contents() {
         <ListItemIcon>
           <SportsHandballIcon />
         </ListItemIcon>
-        <ListItemText primary="Blog" />
+        <ListItemText primary="All Posts" />
       </ListItemAppLink>
     </List>
   );

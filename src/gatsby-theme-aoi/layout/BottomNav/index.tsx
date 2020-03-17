@@ -15,7 +15,7 @@ function BottomNav() {
   return (
     <BottomNavigation component="nav" value={pathname} onChange={_onChange} showLabels>
       <BottomNavigationAction label="Top" value={withPrefix('/')} icon={<Home />} />
-      <BottomNavigationAction label="Blog" value={withPrefix('/blog/')} icon={<SubjectIcon />} />
+      <BottomNavigationAction label="All Posts" value={withPrefix('/blog/')} icon={<SubjectIcon />} />
     </BottomNavigation>
   );
 }
