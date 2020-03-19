@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/03/chitose-bridge/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/03/kudo-desu/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/03/musica-piccolino/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/03/daisy-holiday/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/03/jazz-tonight/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/03/music-asia/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/03/oriental-music-show/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/03/ordinary-music/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/03/kiracla/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/03/uchu-mao/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/03/gendaino-ongaku/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/03/kogakuno-tanoshimi/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/03/third-stone-from-the-sun/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/03/sundaysongbook/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/03/vamola-mito/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/03/classic-meikyu/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/02/gatsby-starter-and-theme/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/02/getting-started-2/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/02/getting-started/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/02/hello-aoi/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/categories/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/page-2/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
