@@ -48,30 +48,8 @@
     "build": "gatsby clean && gatsby build --prefix-paths",
     "develop": "gatsby develop -o -H 0.0.0.0",
     "serve": "gatsby serve -o -H 0.0.0.0 --prefix-paths",
-    "clean": "gatsby clean",
-    "post": "node post.js",
-    "deploy": "gh-pages -d public",
-    "format": "prettier --parser typescript --trailing-comma es5 --single-quote --write \"src/**/*.ts*\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "clean": "gatsby clean"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@harelpls/storybook-addon-materialui": "^1.0.2",
-    "@storybook/addon-actions": "^5.3.14",
-    "@storybook/addon-info": "^5.3.14",
-    "@storybook/addon-links": "^5.3.14",
-    "@storybook/addon-viewport": "^5.3.14",
-    "@storybook/addons": "^5.3.14",
-    "@storybook/react": "^5.3.14",
-    "@types/storybook__react": "^5.2.1",
-    "babel-loader": "^8.0.6",
-    "babel-preset-react-app": "^9.1.1",
-    "gh-pages": "^2.0.1",
-    "prettier": "^1.8.2",
-    "tslint": "^6.0.0",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-plugin-prettier": "^2.0.1"
   }
 }
