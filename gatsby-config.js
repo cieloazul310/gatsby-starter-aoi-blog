@@ -83,6 +83,12 @@ module.exports = {
             resolve: `gatsby-remark-prismjs`
           },
           {
+            resolve: 'gatsby-remark-normalize-paths',
+            options: {
+              pathFields: ['featuredImage']
+            }
+          },
+          {
             resolve: `gatsby-remark-relative-images`
           },
           {
