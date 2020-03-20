@@ -1,5 +1,7 @@
 import * as React from 'react';
 import Box from '@material-ui/core/Box';
+import { useLocation } from '@reach/router';
+
 declare global {
   interface Window {
     adsbygoogle: any[];
@@ -7,14 +9,15 @@ declare global {
 }
 
 export function AdInDrawer() {
+  const { pathname } = useLocation();
   React.useEffect(() => {
     if (window) {
       window.adsbygoogle = window.adsbygoogle || [];
       window.adsbygoogle.push({});
     }
-  });
+  }, [pathname]);
   return (
-    <Box p={2} overflow="hidden">
+    <Box p={2} overflow="hidden" key={pathname}>
       <ins
         className="adsbygoogle"
         style={{ display: 'block' }}
@@ -28,14 +31,15 @@ export function AdInDrawer() {
 }
 
 export function AdInArticle() {
+  const { pathname } = useLocation();
   React.useEffect(() => {
     if (window) {
       window.adsbygoogle = window.adsbygoogle || [];
       window.adsbygoogle.push({});
     }
-  });
+  }, [pathname]);
   return (
-    <Box px={1} py={2} overflow="hidden">
+    <Box px={1} py={2} overflow="hidden" key={pathname}>
       <ins
         className="adsbygoogle"
         style={{ display: 'block', textAlign: 'center' }}
@@ -49,14 +53,15 @@ export function AdInArticle() {
 }
 
 export function AdInFooter() {
+  const { pathname } = useLocation();
   React.useEffect(() => {
     if (window) {
       window.adsbygoogle = window.adsbygoogle || [];
       window.adsbygoogle.push({});
     }
-  });
+  }, [pathname]);
   return (
-    <Box px={1} py={2} overflow="hidden">
+    <Box px={1} py={2} overflow="hidden" key={pathname}>
       <ins
         className="adsbygoogle"
         style={{ display: 'block' }}
