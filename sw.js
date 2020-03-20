@@ -39,11 +39,11 @@ self.__precacheManifest = [
     "url": "commons-099d6a49bf657eabe8c3.js"
   },
   {
-    "url": "app-00ab5ae9bce0aa0c0045.js"
+    "url": "app-e5174730136cfaa8fb8a.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "a0cc5a686668ec308f32d8762ab0a98b"
+    "revision": "94f896a3df7d73f479111bcbde61a11d"
   },
   {
     "url": "google-fonts/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxK.woff2",
@@ -58,7 +58,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "a1f223c2a5ba9f236e67931ebc6cb3d6"
+    "revision": "4b8e33d7847c10818a2a26ea9f2cd08e"
   },
   {
     "url": "manifest.webmanifest",
@@ -155,7 +155,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/gatsby-theme-aoi-blog/app-00ab5ae9bce0aa0c0045.js`))) {
+  if (!resources || !(await caches.match(`/gatsby-theme-aoi-blog/app-e5174730136cfaa8fb8a.js`))) {
     return await fetch(event.request)
   }
 
