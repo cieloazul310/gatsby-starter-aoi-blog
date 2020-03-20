@@ -54,7 +54,6 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
 };
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  // Destructure the createPage function from the actions object
   const { createPage } = actions;
   const result = await graphql(`
     query CreateMdxPages {
@@ -76,22 +75,34 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (result.errors) {
     reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
   }
-  // Create blog post pages.
   const posts = result.data.allMdx.edges;
-  // you'll call `createPage` for each result
+
+  // generate Each post pages
   posts.forEach(({ node }, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node;
     const next = index === 0 ? null : posts[index - 1].node;
 
     createPage({
-      // This is the slug you created before
-      // (or `node.frontmatter.slug`)
       path: node.fields.slug,
-      // This component will wrap our MDX content
       component: path.resolve(`./src/templates/blog-post.tsx`),
-      // You can use the values in this context in
-      // our page layout component
       context: { previous, next, id: node.id }
+    });
+  });
+
+  // generate All posts pages
+  const postsPerPage = 15;
+  const numPages = Math.ceil(posts.length / postsPerPage);
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+      component: path.resolve('./src/templates/blog-list.tsx'),
+      context: {
+        title: 'All Posts',
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1
+      }
     });
   });
 };

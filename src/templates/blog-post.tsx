@@ -20,20 +20,28 @@ interface Props {
 }
 
 function BlogPostTemplate({ pageContext, data: { mdx } }: Props) {
-  const { title, fullWidth, featuredImage, author } = mdx.frontmatter;
+  const { title, subtitle, date, fullWidth, featuredImage, author } = mdx.frontmatter;
   const { previous, next } = pageContext;
   const componentViewports = viewportsHelper({
     Fab: fullWidth ? true : 'smDown',
     PermanentDrawer: fullWidth ? false : 'mdUp'
   });
-  
+  const jumbotron = (
+    <Jumbotron
+      title={title}
+      header={`${date} post by ${author.name}`}
+      subtitle={subtitle}
+      image={featuredImage && featuredImage.childImageSharp ? featuredImage.childImageSharp.fluid.src : null}
+    />
+  );
+
   return (
     <Layout
       maxWidth="md"
       title={title}
-      image={featuredImage ? featuredImage.childImageSharp.fluid.src.replace(withPrefix(''), '') : null}
+      image={featuredImage && featuredImage.childImageSharp ? featuredImage.childImageSharp.fluid.src.replace(withPrefix(''), '/') : null}
       componentViewports={componentViewports}
-      jumbotron={<Jumbotron frontmatter={mdx.frontmatter} />}
+      jumbotron={jumbotron}
       drawerContents={<DrawerPageNavigation previous={previous} next={next} />}
     >
       <MDXProvider components={{ ...muiComponents, ...shortcodes }}>
@@ -57,6 +65,7 @@ export const pageQuery = graphql`
         title
         subtitle
         categories
+        tags
         date(formatString: "YYYY-MM-DD")
         author {
           id

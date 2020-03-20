@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "author": "cieloazul310 <cieloazul310@gmail.com>",
   "dependencies": {
+    "@material-ui/lab": "^4.0.0-alpha.46",
     "@mdx-js/mdx": "^1.5.7",
     "@mdx-js/react": "^1.5.7",
     "@types/mdx-js__react": "^1.5.1",
@@ -26,8 +27,9 @@
     "gatsby-remark-images": "^3.1.49",
     "gatsby-remark-prismjs": "^3.3.35",
     "gatsby-remark-relative-images": "^0.3.0",
+    "gatsby-remark-responsive-iframe": "^2.2.34",
     "gatsby-source-filesystem": "^2.1.54",
-    "gatsby-theme-aoi": "0.0.3",
+    "gatsby-theme-aoi": "1.0.3",
     "gatsby-transformer-json": "^2.2.27",
     "gatsby-transformer-remark": "^2.6.58",
     "gatsby-transformer-sharp": "^2.3.18",
@@ -43,7 +45,7 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "build": "gatsby build --prefix-paths",
+    "build": "gatsby clean && gatsby build --prefix-paths",
     "develop": "gatsby develop -o -H 0.0.0.0",
     "serve": "gatsby serve -o -H 0.0.0.0 --prefix-paths",
     "clean": "gatsby clean",

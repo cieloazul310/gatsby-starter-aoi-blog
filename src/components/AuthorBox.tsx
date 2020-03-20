@@ -4,7 +4,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import MuiLink from '@material-ui/core/Link';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import GithubIcon from '@material-ui/icons/Github';
+import GitHubIcon from '@material-ui/icons/GitHub';
 import PublicIcon from '@material-ui/icons/Public';
 import { AuthorsJson } from '../../graphql-types';
 
@@ -43,7 +43,7 @@ function AuthorBox({ author: { name, url, twitter, github } }: Props) {
           ) : null}
           {github ? (
             <MuiLink className={classes.item} href={`https://github.com/${github}`} color="inherit">
-              <GithubIcon />
+              <GitHubIcon />
             </MuiLink>
           ) : null}
         </Typography>

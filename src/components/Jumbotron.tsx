@@ -2,8 +2,6 @@ import * as React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import InlineAuthor from './InlineAuthor';
-import { Frontmatter } from '../../graphql-types';
 
 const useStyles = makeStyles<Theme, { bgImg: string }>((theme: Theme) =>
   createStyles({
@@ -13,8 +11,8 @@ const useStyles = makeStyles<Theme, { bgImg: string }>((theme: Theme) =>
       backgroundColor: bgImg ? null : theme.palette.type !== 'dark' ? theme.palette.secondary.light : theme.palette.background.paper,
       backgroundPosition: 'center',
       backgroundSize: 'cover',
-      filter: bgImg ? 'blur(8px) brightness(0.8)' : null,
-      transform: bgImg ? 'scale(1.1)' : null,
+      filter: bgImg ? 'blur(6px) brightness(0.9)' : null,
+      transform: bgImg ? 'scale(1.1)' : null
       //transition: theme.transitions.create("background")
     }),
     jumbotronText: {
@@ -35,19 +33,20 @@ const useStyles = makeStyles<Theme, { bgImg: string }>((theme: Theme) =>
 );
 
 interface Props {
-  frontmatter: Frontmatter;
+  title: string;
+  header?: string;
+  subtitle?: string;
+  image?: string;
 }
 
-function Jumbotron({ frontmatter: { title, date, subtitle, author, featuredImage } }: Props) {
-  const classes = useStyles({ bgImg: featuredImage ? featuredImage.childImageSharp.fluid.src : null });
+function Jumbotron({ title, header, subtitle, image }: Props) {
+  const classes = useStyles({ bgImg: image || null });
 
   return (
     <Box height={280} overflow="hidden">
       <Box className={classes.jumbotronBg} />
       <Box className={classes.jumbotronText}>
-        <Typography variant="subtitle2">
-          <time>{date}</time>  {author ? <InlineAuthor author={author} /> : null}
-        </Typography>
+        {header ? <Typography variant="subtitle2">{header}</Typography> : null}
         <Typography variant="h2" className={classes.jumbotronTitle}>
           {title}
         </Typography>

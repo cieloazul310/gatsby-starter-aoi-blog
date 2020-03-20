@@ -32,6 +32,12 @@ function Contents() {
         </ListItemIcon>
         <ListItemText primary="All Posts" />
       </ListItemAppLink>
+      <ListItemAppLink to="/categories/" button selected={pathname === withPrefix('/categories/')} role="menuitem">
+        <ListItemIcon>
+          <SportsHandballIcon />
+        </ListItemIcon>
+        <ListItemText primary="Categories" />
+      </ListItemAppLink>
     </List>
   );
 }

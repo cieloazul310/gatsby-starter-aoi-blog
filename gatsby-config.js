@@ -26,7 +26,12 @@ module.exports = {
   },
   pathPrefix: '/gatsby-theme-aoi-blog',
   plugins: [
-    `gatsby-theme-aoi`,
+    {
+      resolve: `gatsby-theme-aoi`,
+      options: {
+        siteId: `gatsby-theme-aoi-blog`
+      }
+    },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
@@ -87,7 +92,8 @@ module.exports = {
               maxWidth: 800,
               showCaptions: ['title']
             }
-          }
+          },
+          `gatsby-remark-responsive-iframe`
         ]
       }
     },

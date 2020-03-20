@@ -939,6 +939,7 @@ export type FileFieldsEnum =
   'childMdx___frontmatter___featuredImage___children' |
   'childMdx___frontmatter___featuredImage___childrenAuthorsJson' |
   'childMdx___frontmatter___fullWidth' |
+  'childMdx___frontmatter___tags' |
   'childMdx___frontmatter___subtitle' |
   'childMdx___body' |
   'childMdx___excerpt' |
@@ -1068,6 +1069,7 @@ export type Frontmatter = {
   categories?: Maybe<Array<Maybe<Scalars['String']>>>;
   featuredImage?: Maybe<File>;
   fullWidth?: Maybe<Scalars['Boolean']>;
+  tags?: Maybe<Array<Maybe<Scalars['String']>>>;
   subtitle?: Maybe<Scalars['String']>;
 };
 
@@ -1086,6 +1088,7 @@ export type FrontmatterFilterInput = {
   categories?: Maybe<StringQueryOperatorInput>;
   featuredImage?: Maybe<FileFilterInput>;
   fullWidth?: Maybe<BooleanQueryOperatorInput>;
+  tags?: Maybe<StringQueryOperatorInput>;
   subtitle?: Maybe<StringQueryOperatorInput>;
 };
 
@@ -1793,6 +1796,7 @@ export type MdxFieldsEnum =
   'frontmatter___featuredImage___childMdx___id' |
   'frontmatter___featuredImage___childMdx___children' |
   'frontmatter___fullWidth' |
+  'frontmatter___tags' |
   'frontmatter___subtitle' |
   'body' |
   'excerpt' |
@@ -2661,6 +2665,11 @@ export type SitePageContext = {
   previous?: Maybe<SitePageContextPrevious>;
   next?: Maybe<SitePageContextNext>;
   id?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
+  numPages?: Maybe<Scalars['Int']>;
+  currentPage?: Maybe<Scalars['Int']>;
   frontmatter?: Maybe<SitePageContextFrontmatter>;
 };
 
@@ -2668,6 +2677,11 @@ export type SitePageContextFilterInput = {
   previous?: Maybe<SitePageContextPreviousFilterInput>;
   next?: Maybe<SitePageContextNextFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  limit?: Maybe<IntQueryOperatorInput>;
+  skip?: Maybe<IntQueryOperatorInput>;
+  numPages?: Maybe<IntQueryOperatorInput>;
+  currentPage?: Maybe<IntQueryOperatorInput>;
   frontmatter?: Maybe<SitePageContextFrontmatterFilterInput>;
 };
 
@@ -2841,6 +2855,11 @@ export type SitePageFieldsEnum =
   'context___next___frontmatter___title' |
   'context___next___fields___slug' |
   'context___id' |
+  'context___title' |
+  'context___limit' |
+  'context___skip' |
+  'context___numPages' |
+  'context___currentPage' |
   'context___frontmatter___title' |
   'pluginCreator___id' |
   'pluginCreator___parent___id' |
@@ -2885,14 +2904,12 @@ export type SitePageFieldsEnum =
   'pluginCreator___version' |
   'pluginCreator___pluginOptions___fonts' |
   'pluginCreator___pluginOptions___fonts___family' |
-  'pluginCreator___pluginOptions___utilPath' |
+  'pluginCreator___pluginOptions___siteId' |
   'pluginCreator___pluginOptions___path' |
   'pluginCreator___pluginOptions___name' |
   'pluginCreator___pluginOptions___extensions' |
   'pluginCreator___pluginOptions___defaultLayouts___default' |
   'pluginCreator___pluginOptions___defaultLayouts___blog' |
-  'pluginCreator___pluginOptions___gatsbyRemarkPlugins' |
-  'pluginCreator___pluginOptions___gatsbyRemarkPlugins___resolve' |
   'pluginCreator___pluginOptions___trackingId' |
   'pluginCreator___pluginOptions___publisherId' |
   'pluginCreator___pluginOptions___short_name' |
@@ -3091,26 +3108,12 @@ export type SitePluginFieldsEnum =
   'version' |
   'pluginOptions___fonts' |
   'pluginOptions___fonts___family' |
-  'pluginOptions___utilPath' |
+  'pluginOptions___siteId' |
   'pluginOptions___path' |
   'pluginOptions___name' |
   'pluginOptions___extensions' |
   'pluginOptions___defaultLayouts___default' |
   'pluginOptions___defaultLayouts___blog' |
-  'pluginOptions___gatsbyRemarkPlugins' |
-  'pluginOptions___gatsbyRemarkPlugins___resolve' |
-  'pluginOptions___gatsbyRemarkPlugins___options___maxWidth' |
-  'pluginOptions___gatsbyRemarkPlugins___options___showCaptions' |
-  'pluginOptions___gatsbyRemarkPlugins___options___pathPrefix' |
-  'pluginOptions___gatsbyRemarkPlugins___options___wrapperStyle' |
-  'pluginOptions___gatsbyRemarkPlugins___options___backgroundColor' |
-  'pluginOptions___gatsbyRemarkPlugins___options___linkImagesToOriginal' |
-  'pluginOptions___gatsbyRemarkPlugins___options___markdownCaptions' |
-  'pluginOptions___gatsbyRemarkPlugins___options___withWebp' |
-  'pluginOptions___gatsbyRemarkPlugins___options___tracedSVG' |
-  'pluginOptions___gatsbyRemarkPlugins___options___loading' |
-  'pluginOptions___gatsbyRemarkPlugins___options___disableBgImageOnAlpha' |
-  'pluginOptions___gatsbyRemarkPlugins___options___disableBgImage' |
   'pluginOptions___trackingId' |
   'pluginOptions___publisherId' |
   'pluginOptions___short_name' |
@@ -3236,12 +3239,11 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 
 export type SitePluginPluginOptions = {
   fonts?: Maybe<Array<Maybe<SitePluginPluginOptionsFonts>>>;
-  utilPath?: Maybe<Scalars['String']>;
+  siteId?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   extensions?: Maybe<Array<Maybe<Scalars['String']>>>;
   defaultLayouts?: Maybe<SitePluginPluginOptionsDefaultLayouts>;
-  gatsbyRemarkPlugins?: Maybe<Array<Maybe<SitePluginPluginOptionsGatsbyRemarkPlugins>>>;
   trackingId?: Maybe<Scalars['String']>;
   publisherId?: Maybe<Scalars['String']>;
   short_name?: Maybe<Scalars['String']>;
@@ -3265,12 +3267,11 @@ export type SitePluginPluginOptionsDefaultLayoutsFilterInput = {
 
 export type SitePluginPluginOptionsFilterInput = {
   fonts?: Maybe<SitePluginPluginOptionsFontsFilterListInput>;
-  utilPath?: Maybe<StringQueryOperatorInput>;
+  siteId?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   extensions?: Maybe<StringQueryOperatorInput>;
   defaultLayouts?: Maybe<SitePluginPluginOptionsDefaultLayoutsFilterInput>;
-  gatsbyRemarkPlugins?: Maybe<SitePluginPluginOptionsGatsbyRemarkPluginsFilterListInput>;
   trackingId?: Maybe<StringQueryOperatorInput>;
   publisherId?: Maybe<StringQueryOperatorInput>;
   short_name?: Maybe<StringQueryOperatorInput>;
@@ -3292,50 +3293,6 @@ export type SitePluginPluginOptionsFontsFilterInput = {
 
 export type SitePluginPluginOptionsFontsFilterListInput = {
   elemMatch?: Maybe<SitePluginPluginOptionsFontsFilterInput>;
-};
-
-export type SitePluginPluginOptionsGatsbyRemarkPlugins = {
-  resolve?: Maybe<Scalars['String']>;
-  options?: Maybe<SitePluginPluginOptionsGatsbyRemarkPluginsOptions>;
-};
-
-export type SitePluginPluginOptionsGatsbyRemarkPluginsFilterInput = {
-  resolve?: Maybe<StringQueryOperatorInput>;
-  options?: Maybe<SitePluginPluginOptionsGatsbyRemarkPluginsOptionsFilterInput>;
-};
-
-export type SitePluginPluginOptionsGatsbyRemarkPluginsFilterListInput = {
-  elemMatch?: Maybe<SitePluginPluginOptionsGatsbyRemarkPluginsFilterInput>;
-};
-
-export type SitePluginPluginOptionsGatsbyRemarkPluginsOptions = {
-  maxWidth?: Maybe<Scalars['Int']>;
-  showCaptions?: Maybe<Array<Maybe<Scalars['String']>>>;
-  pathPrefix?: Maybe<Scalars['String']>;
-  wrapperStyle?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  linkImagesToOriginal?: Maybe<Scalars['Boolean']>;
-  markdownCaptions?: Maybe<Scalars['Boolean']>;
-  withWebp?: Maybe<Scalars['Boolean']>;
-  tracedSVG?: Maybe<Scalars['Boolean']>;
-  loading?: Maybe<Scalars['String']>;
-  disableBgImageOnAlpha?: Maybe<Scalars['Boolean']>;
-  disableBgImage?: Maybe<Scalars['Boolean']>;
-};
-
-export type SitePluginPluginOptionsGatsbyRemarkPluginsOptionsFilterInput = {
-  maxWidth?: Maybe<IntQueryOperatorInput>;
-  showCaptions?: Maybe<StringQueryOperatorInput>;
-  pathPrefix?: Maybe<StringQueryOperatorInput>;
-  wrapperStyle?: Maybe<StringQueryOperatorInput>;
-  backgroundColor?: Maybe<StringQueryOperatorInput>;
-  linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>;
-  markdownCaptions?: Maybe<BooleanQueryOperatorInput>;
-  withWebp?: Maybe<BooleanQueryOperatorInput>;
-  tracedSVG?: Maybe<BooleanQueryOperatorInput>;
-  loading?: Maybe<StringQueryOperatorInput>;
-  disableBgImageOnAlpha?: Maybe<BooleanQueryOperatorInput>;
-  disableBgImage?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type SitePluginSortInput = {
@@ -3411,6 +3368,25 @@ export type StringQueryOperatorInput = {
   glob?: Maybe<Scalars['String']>;
 };
 
+export type CategoriesQueryVariables = {};
+
+
+export type CategoriesQuery = { allMdx: { group: Array<Pick<MdxGroupConnection, 'fieldValue' | 'totalCount'>> } };
+
+export type BlogListQueryVariables = {
+  skip: Scalars['Int'];
+  limit: Scalars['Int'];
+};
+
+
+export type BlogListQuery = { allMdx: { edges: Array<{ node: (
+        Pick<Mdx, 'id'>
+        & { fields: Maybe<Pick<MdxFields, 'slug'>>, frontmatter: Maybe<(
+          Pick<Frontmatter, 'title' | 'date'>
+          & { author: Maybe<Pick<AuthorsJson, 'name'>> }
+        )> }
+      ) }> } };
+
 export type BlogPostQueryQueryVariables = {
   id?: Maybe<Scalars['String']>;
 };
@@ -3419,7 +3395,7 @@ export type BlogPostQueryQueryVariables = {
 export type BlogPostQueryQuery = { mdx: Maybe<(
     Pick<Mdx, 'id' | 'body'>
     & { frontmatter: Maybe<(
-      Pick<Frontmatter, 'title' | 'subtitle' | 'categories' | 'date' | 'fullWidth'>
+      Pick<Frontmatter, 'title' | 'subtitle' | 'categories' | 'tags' | 'date' | 'fullWidth'>
       & { author: Maybe<Pick<AuthorsJson, 'id' | 'name' | 'url' | 'twitter' | 'github'>>, featuredImage: Maybe<{ childImageSharp: Maybe<{ fluid: Maybe<Pick<ImageSharpFluid, 'srcSet' | 'src'>> }> }> }
     )> }
   )> };
