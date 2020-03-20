@@ -42,12 +42,12 @@ function archetypes(date, slug) {
   return [
     '---',
     `title: ${slug.replace('-', ' ')}`,
-    `#subtitle: ""`,
+    `#subtitle: `,
     `date: ${date.toISOString()}`,
     `categories: []`,
     `tags: []`,
     `author: ${author}`,
-    `#featuredImage: ""`,
+    `#featuredImage: `,
     `#fullWidth: true`,
     '---',
     ''
