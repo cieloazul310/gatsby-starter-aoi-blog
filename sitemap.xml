@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/03/radiomanjack/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/03/chitose-bridge/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/03/kudo-desu/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/03/musica-piccolino/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -22,7 +23,19 @@
 <url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2020/02/hello-aoi/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/blog/2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/categories/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/category/ラジオ</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/category/Tutorial</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/category/Topics</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/category/テレビ</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/category/橋</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/category/水戸ホーリーホック</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/category/音楽</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/author/cieloazul310</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/author/cieloazul310/2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/author/久保青水</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/author/那珂川緑波</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/author/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/category/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://cieloazul310.github.io/gatsby-theme-aoi-blog/gatsby-theme-aoi-blog/page-2/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
