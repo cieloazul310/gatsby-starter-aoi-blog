@@ -13,7 +13,6 @@ const useStyles = makeStyles<Theme, { bgImg: string }>((theme: Theme) =>
       backgroundSize: 'cover',
       filter: bgImg ? 'blur(6px) brightness(0.9)' : null,
       transform: bgImg ? 'scale(1.1)' : null
-      //transition: theme.transitions.create("background")
     }),
     jumbotronText: {
       height: 280,
@@ -33,9 +32,9 @@ const useStyles = makeStyles<Theme, { bgImg: string }>((theme: Theme) =>
 );
 
 interface Props {
-  title: string;
-  header?: string;
-  subtitle?: string;
+  title: string | JSX.Element | JSX.Element[] | (string | JSX.Element | JSX.Element[])[];
+  header?: string | JSX.Element | JSX.Element[] | (string | JSX.Element | JSX.Element[])[];
+  subtitle?: string | JSX.Element | JSX.Element[] | (string | JSX.Element | JSX.Element[])[];
   image?: string;
 }
 

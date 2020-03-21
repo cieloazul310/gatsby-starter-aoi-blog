@@ -1,16 +1,21 @@
 [
   {
     "name": "cieloazul310",
+    "description": "It's only football (But I like it!)",
     "url": "https://cieloazul310.github.io",
     "twitter": "cieloazul310",
-    "github": "cieloazul310"
+    "github": "cieloazul310",
+    "avatar": "../content/assets/IMG_5963.jpeg"
   },
   {
     "name": "那珂川緑波",
+    "description": "自称都市計画郷土史家。趣味は道に迷うこと。",
     "url": "https://310city.blogspot.com"
   },
   {
     "name": "久保青水",
-    "twitter": "geonet310"
+    "description": "地図を作る人。暗渠に出現する。",
+    "twitter": "geonet310",
+    "avatar": "../content/assets/IMG_1568.jpeg"
   }
 ]

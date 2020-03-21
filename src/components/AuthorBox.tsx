@@ -1,36 +1,48 @@
 import * as React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
+import Box, { BoxProps } from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import MuiLink from '@material-ui/core/Link';
+import Avatar from '@material-ui/core/Avatar';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import PublicIcon from '@material-ui/icons/Public';
+import AppLink from 'gatsby-theme-aoi/src/components/AppLink';
+import { AuthorIcon } from '../icons';
 import { AuthorsJson } from '../../graphql-types';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      backgroundColor: theme.palette.background.paper
+    avatar: {
+      width: theme.spacing(9),
+      height: theme.spacing(9)
     },
     item: {
-      marginRight: theme.spacing(0.5),
-      verticalAlign: 'sub'
+      marginRight: theme.spacing(1),
     }
   })
 );
 
-interface Props {
-  author: Pick<AuthorsJson, 'id' | 'name' | 'url' | 'twitter' | 'github'>;
-}
+type Props = {
+  author: Pick<AuthorsJson, 'id' | 'name' | 'url' | 'twitter' | 'github' | 'description' | 'avatar'>;
+  disableLink?: boolean;
+} & BoxProps;
 
-function AuthorBox({ author: { name, url, twitter, github } }: Props) {
+function AuthorBox({ author: { name, url, twitter, github, avatar, description }, disableLink = false, ...props }: Props) {
   const classes = useStyles();
+  const img = avatar && avatar.childImageSharp ? avatar.childImageSharp.fluid.src : null;
+
   return (
-    <Box py={4}>
-      <Box p={4} className={classes.root}>
-        <Typography variant="h6" component="small">
-          author: {name}
+    <Box display="flex" alignItems="center" {...props}>
+      <Avatar className={classes.avatar} alt={name} src={img}>
+        {!img ? <AuthorIcon /> : null}
+      </Avatar>
+      <Box display="flex" flexDirection="column" pl={4}>
+        <Typography variant="h6">{name}</Typography>
+        <Typography variant="body2" gutterBottom>
+          {description}
+        </Typography>
+        <div>
           {twitter ? (
             <MuiLink className={classes.item} href={`https://twitter.com/${twitter}`} color="inherit">
               <TwitterIcon />
@@ -46,7 +58,12 @@ function AuthorBox({ author: { name, url, twitter, github } }: Props) {
               <GitHubIcon />
             </MuiLink>
           ) : null}
-        </Typography>
+        </div>
+        {!disableLink ? (
+          <Typography variant="body2">
+            <AppLink to={`/author/${name}`}>記事一覧へ</AppLink>
+          </Typography>
+        ) : null}
       </Box>
     </Box>
   );
