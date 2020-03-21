@@ -2,6 +2,7 @@ import * as React from 'react';
 import { graphql, withPrefix } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import Divider from '@material-ui/core/Divider';
 import Layout from 'gatsby-theme-aoi/src/layouts/JumbotronLayout';
 import Jumbotron from '../components/Jumbotron';
 import DrawerPageNavigation from '../components/DrawerPageNavigation';
@@ -27,14 +28,7 @@ function BlogPostTemplate({ pageContext, data: { mdx } }: Props) {
     PermanentDrawer: fullWidth ? false : 'mdUp'
   });
   const image = featuredImage && featuredImage.childImageSharp ? featuredImage.childImageSharp.fluid.src : null;
-  const jumbotron = (
-    <Jumbotron
-      title={title}
-      header={`${date} post by ${author.name}`}
-      subtitle={subtitle}
-      image={image}
-    />
-  );
+  const jumbotron = <Jumbotron title={title} header={`${date} post by ${author.name}`} subtitle={subtitle} image={image} />;
 
   return (
     <Layout
@@ -48,8 +42,13 @@ function BlogPostTemplate({ pageContext, data: { mdx } }: Props) {
       <MDXProvider components={{ ...muiComponents, ...shortcodes }}>
         <MDXRenderer>{mdx.body}</MDXRenderer>
       </MDXProvider>
-      <AuthorBox author={author} />
-      <PageNavigation previous={previous} next={next} />
+      <Divider />
+      <AuthorBox author={author} py={4} />
+      <PageNavigation
+        previous={previous ? { to: previous.fields.slug, title: previous.frontmatter.title } : null}
+        next={next ? { to: next.fields.slug, title: next.frontmatter.title } : null}
+        center={{ to: '/blog', title: 'All Posts' }}
+      />
       <AdInFooter />
     </Layout>
   );
@@ -71,9 +70,17 @@ export const pageQuery = graphql`
         author {
           id
           name
+          description
           url
           twitter
           github
+          avatar {
+            childImageSharp {
+              fluid(maxWidth: 240) {
+                src
+              }
+            }
+          }
         }
         featuredImage {
           childImageSharp {

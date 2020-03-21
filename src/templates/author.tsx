@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
-import Avatar from '@material-ui/core/Avatar';
+import Box from '@material-ui/core/Box';
 import Layout from 'gatsby-theme-aoi/src/layouts/JumbotronLayout';
 import Jumbotron from '../components/Jumbotron';
+import AuthorBox from '../components/AuthorBox';
 import BlogListTemplate from './blog-list';
-import { AuthorIcon } from '../icons';
 
 import { AuthorQuery, SitePageContext } from '../../graphql-types';
 
@@ -21,6 +21,7 @@ function AllPostsTemplate({ data, pageContext }: Props) {
 
   return (
     <Layout title={fieldValue} jumbotron={<Jumbotron title={fieldValue} header={type} image={avatar} />}>
+      <AuthorBox author={authorsJson} disableLink p={2} />
       <BlogListTemplate edges={edges} numPages={numPages} currentPage={currentPage} basePath={`/author/${fieldValue}`} />
     </Layout>
   );
@@ -53,6 +54,7 @@ export const authorQuery = graphql`
       }
     }
     authorsJson(name: { eq: $fieldValue }) {
+      id
       name
       description
       twitter

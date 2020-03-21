@@ -5,27 +5,37 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import { AppLinkButton } from 'gatsby-theme-aoi/src/components/AppLink';
 import { SitePageContext } from '../../graphql-types';
 
-type Props = Partial<Pick<SitePageContext, 'previous' | 'next'>>;
+//type Props = Partial<Pick<SitePageContext, 'previous' | 'next'>>;
+interface Navigation {
+  to: string;
+  title: string;
+}
 
-function PageNavigation({ previous, next }: Props) {
+interface Props {
+  previous?: Navigation;
+  next?: Navigation;
+  center: Navigation;
+}
+
+function PageNavigation({ previous, next, center }: Props) {
   return (
     <Box py={4}>
       <Box textAlign="left" py={1}>
         {previous ? (
-          <AppLinkButton to={previous.fields.slug}>
-            <ArrowBackIcon /> {previous.frontmatter.title}
+          <AppLinkButton to={previous.to}>
+            <ArrowBackIcon /> {previous.title}
           </AppLinkButton>
         ) : null}
       </Box>
       <Box textAlign="right" py={1}>
         {next ? (
-          <AppLinkButton to={next.fields.slug}>
-            {next.frontmatter.title} <ArrowForwardIcon />
+          <AppLinkButton to={next.to}>
+            {next.title} <ArrowForwardIcon />
           </AppLinkButton>
         ) : null}
       </Box>
       <Box textAlign="center">
-        <AppLinkButton to="/blog/">All Posts</AppLinkButton>
+        <AppLinkButton to={center.to}>{center.title}</AppLinkButton>
       </Box>
     </Box>
   );

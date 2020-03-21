@@ -7,6 +7,7 @@ import ListItemAvater from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import Avater from '@material-ui/core/Avatar';
 import Layout from 'gatsby-theme-aoi/src/layouts/JumbotronLayout';
+import AppLink from 'gatsby-theme-aoi/src/components/AppLink';
 import ListItemLink from 'gatsby-theme-aoi/src/components/ListItemLink';
 import Jumbotron from '../components/Jumbotron';
 import { AuthorIcon } from '../icons';
@@ -77,12 +78,17 @@ function AuthorsPage() {
                 <ListItem>
                   <ListItemAvater>
                     <Avater src={authorJson.avatar ? authorJson.avatar.childImageSharp.fluid.src : null} alt={author.fieldValue}>
-                      {!authorJson.avatar ? (
-                        <AuthorIcon />
-                      ) : null}
+                      {!authorJson.avatar ? <AuthorIcon /> : null}
                     </Avater>
                   </ListItemAvater>
-                  <ListItemText primary={author.fieldValue} secondary={`${author.totalCount}posts`} />
+                  <ListItemText
+                    primary={
+                      <AppLink to={`/author/${author.fieldValue}`} color="inherit">
+                        {author.fieldValue}
+                      </AppLink>
+                    }
+                    secondary={`${author.totalCount}posts`}
+                  />
                 </ListItem>
                 <List>
                   {author.edges.map(({ node }, index) => (
@@ -99,7 +105,8 @@ function AuthorsPage() {
                   <ListItemLink className={classes.footer} primaryText="More" to={`/author/${author.fieldValue}`} color="secondary" />
                 </List>
               </React.Fragment>
-            );})}
+            );
+          })}
       </List>
     </Layout>
   );

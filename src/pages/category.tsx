@@ -5,6 +5,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Layout from 'gatsby-theme-aoi/src/layouts/JumbotronLayout';
+import AppLink from 'gatsby-theme-aoi/src/components/AppLink';
 import ListItemLink from 'gatsby-theme-aoi/src/components/ListItemLink';
 import Jumbotron from '../components/Jumbotron';
 import { CategoriesQuery } from '../../graphql-types';
@@ -55,7 +56,14 @@ function CategoriesPage() {
           .map((category, i) => (
             <React.Fragment key={i}>
               <ListItem>
-                <ListItemText primary={category.fieldValue} secondary={`${category.totalCount}posts`} />
+                <ListItemText
+                  primary={
+                    <AppLink to={`/category/${category.fieldValue}`} color="inherit">
+                      {category.fieldValue}
+                    </AppLink>
+                  }
+                  secondary={`${category.totalCount}posts`}
+                />
               </ListItem>
               <List>
                 {category.edges.map(({ node }, index) => (
