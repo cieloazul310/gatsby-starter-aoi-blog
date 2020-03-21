@@ -95,7 +95,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/blog` : `/blog/${i + 1}`,
-      component: path.resolve('./src/templates/blog-list.tsx'),
+      component: path.resolve('./src/templates/all-posts.tsx'),
       context: {
         title: 'All Posts',
         limit: postsPerPage,
@@ -105,4 +105,84 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     });
   });
+
+  // generate each category Pages
+  const categoriesResult = await graphql(`
+    query Categories {
+      allMdx(sort: { fields: frontmatter___date, order: DESC }, filter: { fileAbsolutePath: { regex: "/content/blog/" } }) {
+        group(field: frontmatter___categories) {
+          totalCount
+          fieldValue
+          field
+        }
+      }
+    }
+  `);
+  if (categoriesResult.errors) {
+    reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
+  }
+  const categories = categoriesResult.data.allMdx.group.sort((a, b) => b.totalCount - a.totalCount);
+
+  categories.forEach((category, index) => {
+    const previous = index === categories.length - 1 ? null : categories[index + 1];
+    const next = index === 0 ? null : categories[index - 1];
+    const numPages = Math.ceil(category.totalCount / postsPerPage);
+
+    Array.from({ length: numPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/category/${category.fieldValue}` : `/category/${category.fieldValue}/${i + 1}`,
+        component: path.resolve('./src/templates/category.tsx'),
+        context: {
+          previous,
+          next,
+          type: 'Category',
+          fieldValue: category.fieldValue,
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numPages,
+          currentPage: i + 1
+        }
+      });
+    });
+  });
+
+  // generate each author Pages
+  const authorResult = await graphql(`
+    query Authors {
+      allMdx(sort: { fields: frontmatter___date, order: DESC }, filter: { fileAbsolutePath: { regex: "/content/blog/" } }) {
+        group(field: frontmatter___author___name) {
+          totalCount
+          fieldValue
+        }
+      }
+    }
+  `);
+  if (authorResult.errors) {
+    reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
+  }
+  const authors = authorResult.data.allMdx.group.sort((a, b) => b.totalCount - a.totalCount);
+
+  authors.forEach((author, index) => {
+    const previous = index === authors.length - 1 ? null : authors[index + 1];
+    const next = index === 0 ? null : authors[index - 1];
+    const numPages = Math.ceil(author.totalCount / postsPerPage);
+
+    Array.from({ length: numPages }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/author/${author.fieldValue}` : `/author/${author.fieldValue}/${i + 1}`,
+        component: path.resolve('./src/templates/author.tsx'),
+        context: {
+          previous,
+          next,
+          type: 'Author',
+          fieldValue: author.fieldValue,
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numPages,
+          currentPage: i + 1
+        }
+      });
+    });
+  });
+  
 };

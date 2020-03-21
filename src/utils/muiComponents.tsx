@@ -6,6 +6,7 @@ import MuiTable, { TableProps } from '@material-ui/core/Table';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import Divider from '@material-ui/core/Divider';
+import AppLink from 'gatsby-theme-aoi/src/components/AppLink';
 
 const H2 = (props: TypographyProps) => <Typography variant="h2" gutterBottom {...props} />;
 const H3 = (props: Omit<TypographyProps, 'ref'>) => (
@@ -59,6 +60,7 @@ const components = {
   th: TableCell,
   td: TableCell,
   hr: Divider,
+  AppLink
 };
 
 export default components;

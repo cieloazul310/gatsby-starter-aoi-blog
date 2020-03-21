@@ -26,12 +26,13 @@ function BlogPostTemplate({ pageContext, data: { mdx } }: Props) {
     Fab: fullWidth ? true : 'smDown',
     PermanentDrawer: fullWidth ? false : 'mdUp'
   });
+  const image = featuredImage && featuredImage.childImageSharp ? featuredImage.childImageSharp.fluid.src : null;
   const jumbotron = (
     <Jumbotron
       title={title}
       header={`${date} post by ${author.name}`}
       subtitle={subtitle}
-      image={featuredImage && featuredImage.childImageSharp ? featuredImage.childImageSharp.fluid.src : null}
+      image={image}
     />
   );
 
@@ -39,7 +40,7 @@ function BlogPostTemplate({ pageContext, data: { mdx } }: Props) {
     <Layout
       maxWidth="md"
       title={title}
-      image={featuredImage && featuredImage.childImageSharp ? featuredImage.childImageSharp.fluid.src.replace(withPrefix(''), '/') : null}
+      image={image ? image.replace(withPrefix(''), '/') : null}
       componentViewports={componentViewports}
       jumbotron={jumbotron}
       drawerContents={<DrawerPageNavigation previous={previous} next={next} />}
@@ -76,7 +77,7 @@ export const pageQuery = graphql`
         }
         featuredImage {
           childImageSharp {
-            fluid(maxWidth: 800) {
+            fluid(maxWidth: 1200) {
               srcSet
               src
             }

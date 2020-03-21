@@ -34,6 +34,8 @@ export type AuthorsJson = Node & {
   url?: Maybe<Scalars['String']>;
   twitter?: Maybe<Scalars['String']>;
   github?: Maybe<Scalars['String']>;
+  avatar?: Maybe<File>;
+  description?: Maybe<Scalars['String']>;
 };
 
 export type AuthorsJsonConnection = {
@@ -153,7 +155,239 @@ export type AuthorsJsonFieldsEnum =
   'name' |
   'url' |
   'twitter' |
-  'github';
+  'github' |
+  'avatar___sourceInstanceName' |
+  'avatar___absolutePath' |
+  'avatar___relativePath' |
+  'avatar___extension' |
+  'avatar___size' |
+  'avatar___prettySize' |
+  'avatar___modifiedTime' |
+  'avatar___accessTime' |
+  'avatar___changeTime' |
+  'avatar___birthTime' |
+  'avatar___root' |
+  'avatar___dir' |
+  'avatar___base' |
+  'avatar___ext' |
+  'avatar___name' |
+  'avatar___relativeDirectory' |
+  'avatar___dev' |
+  'avatar___mode' |
+  'avatar___nlink' |
+  'avatar___uid' |
+  'avatar___gid' |
+  'avatar___rdev' |
+  'avatar___ino' |
+  'avatar___atimeMs' |
+  'avatar___mtimeMs' |
+  'avatar___ctimeMs' |
+  'avatar___atime' |
+  'avatar___mtime' |
+  'avatar___ctime' |
+  'avatar___birthtime' |
+  'avatar___birthtimeMs' |
+  'avatar___blksize' |
+  'avatar___blocks' |
+  'avatar___publicURL' |
+  'avatar___childImageSharp___fixed___base64' |
+  'avatar___childImageSharp___fixed___tracedSVG' |
+  'avatar___childImageSharp___fixed___aspectRatio' |
+  'avatar___childImageSharp___fixed___width' |
+  'avatar___childImageSharp___fixed___height' |
+  'avatar___childImageSharp___fixed___src' |
+  'avatar___childImageSharp___fixed___srcSet' |
+  'avatar___childImageSharp___fixed___srcWebp' |
+  'avatar___childImageSharp___fixed___srcSetWebp' |
+  'avatar___childImageSharp___fixed___originalName' |
+  'avatar___childImageSharp___resolutions___base64' |
+  'avatar___childImageSharp___resolutions___tracedSVG' |
+  'avatar___childImageSharp___resolutions___aspectRatio' |
+  'avatar___childImageSharp___resolutions___width' |
+  'avatar___childImageSharp___resolutions___height' |
+  'avatar___childImageSharp___resolutions___src' |
+  'avatar___childImageSharp___resolutions___srcSet' |
+  'avatar___childImageSharp___resolutions___srcWebp' |
+  'avatar___childImageSharp___resolutions___srcSetWebp' |
+  'avatar___childImageSharp___resolutions___originalName' |
+  'avatar___childImageSharp___fluid___base64' |
+  'avatar___childImageSharp___fluid___tracedSVG' |
+  'avatar___childImageSharp___fluid___aspectRatio' |
+  'avatar___childImageSharp___fluid___src' |
+  'avatar___childImageSharp___fluid___srcSet' |
+  'avatar___childImageSharp___fluid___srcWebp' |
+  'avatar___childImageSharp___fluid___srcSetWebp' |
+  'avatar___childImageSharp___fluid___sizes' |
+  'avatar___childImageSharp___fluid___originalImg' |
+  'avatar___childImageSharp___fluid___originalName' |
+  'avatar___childImageSharp___fluid___presentationWidth' |
+  'avatar___childImageSharp___fluid___presentationHeight' |
+  'avatar___childImageSharp___sizes___base64' |
+  'avatar___childImageSharp___sizes___tracedSVG' |
+  'avatar___childImageSharp___sizes___aspectRatio' |
+  'avatar___childImageSharp___sizes___src' |
+  'avatar___childImageSharp___sizes___srcSet' |
+  'avatar___childImageSharp___sizes___srcWebp' |
+  'avatar___childImageSharp___sizes___srcSetWebp' |
+  'avatar___childImageSharp___sizes___sizes' |
+  'avatar___childImageSharp___sizes___originalImg' |
+  'avatar___childImageSharp___sizes___originalName' |
+  'avatar___childImageSharp___sizes___presentationWidth' |
+  'avatar___childImageSharp___sizes___presentationHeight' |
+  'avatar___childImageSharp___original___width' |
+  'avatar___childImageSharp___original___height' |
+  'avatar___childImageSharp___original___src' |
+  'avatar___childImageSharp___resize___src' |
+  'avatar___childImageSharp___resize___tracedSVG' |
+  'avatar___childImageSharp___resize___width' |
+  'avatar___childImageSharp___resize___height' |
+  'avatar___childImageSharp___resize___aspectRatio' |
+  'avatar___childImageSharp___resize___originalName' |
+  'avatar___childImageSharp___id' |
+  'avatar___childImageSharp___parent___id' |
+  'avatar___childImageSharp___parent___children' |
+  'avatar___childImageSharp___children' |
+  'avatar___childImageSharp___children___id' |
+  'avatar___childImageSharp___children___children' |
+  'avatar___childImageSharp___internal___content' |
+  'avatar___childImageSharp___internal___contentDigest' |
+  'avatar___childImageSharp___internal___description' |
+  'avatar___childImageSharp___internal___fieldOwners' |
+  'avatar___childImageSharp___internal___ignoreType' |
+  'avatar___childImageSharp___internal___mediaType' |
+  'avatar___childImageSharp___internal___owner' |
+  'avatar___childImageSharp___internal___type' |
+  'avatar___id' |
+  'avatar___parent___id' |
+  'avatar___parent___parent___id' |
+  'avatar___parent___parent___children' |
+  'avatar___parent___children' |
+  'avatar___parent___children___id' |
+  'avatar___parent___children___children' |
+  'avatar___parent___internal___content' |
+  'avatar___parent___internal___contentDigest' |
+  'avatar___parent___internal___description' |
+  'avatar___parent___internal___fieldOwners' |
+  'avatar___parent___internal___ignoreType' |
+  'avatar___parent___internal___mediaType' |
+  'avatar___parent___internal___owner' |
+  'avatar___parent___internal___type' |
+  'avatar___children' |
+  'avatar___children___id' |
+  'avatar___children___parent___id' |
+  'avatar___children___parent___children' |
+  'avatar___children___children' |
+  'avatar___children___children___id' |
+  'avatar___children___children___children' |
+  'avatar___children___internal___content' |
+  'avatar___children___internal___contentDigest' |
+  'avatar___children___internal___description' |
+  'avatar___children___internal___fieldOwners' |
+  'avatar___children___internal___ignoreType' |
+  'avatar___children___internal___mediaType' |
+  'avatar___children___internal___owner' |
+  'avatar___children___internal___type' |
+  'avatar___internal___content' |
+  'avatar___internal___contentDigest' |
+  'avatar___internal___description' |
+  'avatar___internal___fieldOwners' |
+  'avatar___internal___ignoreType' |
+  'avatar___internal___mediaType' |
+  'avatar___internal___owner' |
+  'avatar___internal___type' |
+  'avatar___childrenAuthorsJson' |
+  'avatar___childrenAuthorsJson___id' |
+  'avatar___childrenAuthorsJson___parent___id' |
+  'avatar___childrenAuthorsJson___parent___children' |
+  'avatar___childrenAuthorsJson___children' |
+  'avatar___childrenAuthorsJson___children___id' |
+  'avatar___childrenAuthorsJson___children___children' |
+  'avatar___childrenAuthorsJson___internal___content' |
+  'avatar___childrenAuthorsJson___internal___contentDigest' |
+  'avatar___childrenAuthorsJson___internal___description' |
+  'avatar___childrenAuthorsJson___internal___fieldOwners' |
+  'avatar___childrenAuthorsJson___internal___ignoreType' |
+  'avatar___childrenAuthorsJson___internal___mediaType' |
+  'avatar___childrenAuthorsJson___internal___owner' |
+  'avatar___childrenAuthorsJson___internal___type' |
+  'avatar___childrenAuthorsJson___name' |
+  'avatar___childrenAuthorsJson___url' |
+  'avatar___childrenAuthorsJson___twitter' |
+  'avatar___childrenAuthorsJson___github' |
+  'avatar___childrenAuthorsJson___avatar___sourceInstanceName' |
+  'avatar___childrenAuthorsJson___avatar___absolutePath' |
+  'avatar___childrenAuthorsJson___avatar___relativePath' |
+  'avatar___childrenAuthorsJson___avatar___extension' |
+  'avatar___childrenAuthorsJson___avatar___size' |
+  'avatar___childrenAuthorsJson___avatar___prettySize' |
+  'avatar___childrenAuthorsJson___avatar___modifiedTime' |
+  'avatar___childrenAuthorsJson___avatar___accessTime' |
+  'avatar___childrenAuthorsJson___avatar___changeTime' |
+  'avatar___childrenAuthorsJson___avatar___birthTime' |
+  'avatar___childrenAuthorsJson___avatar___root' |
+  'avatar___childrenAuthorsJson___avatar___dir' |
+  'avatar___childrenAuthorsJson___avatar___base' |
+  'avatar___childrenAuthorsJson___avatar___ext' |
+  'avatar___childrenAuthorsJson___avatar___name' |
+  'avatar___childrenAuthorsJson___avatar___relativeDirectory' |
+  'avatar___childrenAuthorsJson___avatar___dev' |
+  'avatar___childrenAuthorsJson___avatar___mode' |
+  'avatar___childrenAuthorsJson___avatar___nlink' |
+  'avatar___childrenAuthorsJson___avatar___uid' |
+  'avatar___childrenAuthorsJson___avatar___gid' |
+  'avatar___childrenAuthorsJson___avatar___rdev' |
+  'avatar___childrenAuthorsJson___avatar___ino' |
+  'avatar___childrenAuthorsJson___avatar___atimeMs' |
+  'avatar___childrenAuthorsJson___avatar___mtimeMs' |
+  'avatar___childrenAuthorsJson___avatar___ctimeMs' |
+  'avatar___childrenAuthorsJson___avatar___atime' |
+  'avatar___childrenAuthorsJson___avatar___mtime' |
+  'avatar___childrenAuthorsJson___avatar___ctime' |
+  'avatar___childrenAuthorsJson___avatar___birthtime' |
+  'avatar___childrenAuthorsJson___avatar___birthtimeMs' |
+  'avatar___childrenAuthorsJson___avatar___blksize' |
+  'avatar___childrenAuthorsJson___avatar___blocks' |
+  'avatar___childrenAuthorsJson___avatar___publicURL' |
+  'avatar___childrenAuthorsJson___avatar___id' |
+  'avatar___childrenAuthorsJson___avatar___children' |
+  'avatar___childrenAuthorsJson___avatar___childrenAuthorsJson' |
+  'avatar___childrenAuthorsJson___description' |
+  'avatar___childMdx___rawBody' |
+  'avatar___childMdx___fileAbsolutePath' |
+  'avatar___childMdx___frontmatter___title' |
+  'avatar___childMdx___frontmatter___date' |
+  'avatar___childMdx___frontmatter___categories' |
+  'avatar___childMdx___frontmatter___tags' |
+  'avatar___childMdx___frontmatter___fullWidth' |
+  'avatar___childMdx___frontmatter___subtitle' |
+  'avatar___childMdx___body' |
+  'avatar___childMdx___excerpt' |
+  'avatar___childMdx___headings' |
+  'avatar___childMdx___headings___value' |
+  'avatar___childMdx___headings___depth' |
+  'avatar___childMdx___html' |
+  'avatar___childMdx___mdxAST' |
+  'avatar___childMdx___tableOfContents' |
+  'avatar___childMdx___timeToRead' |
+  'avatar___childMdx___wordCount___paragraphs' |
+  'avatar___childMdx___wordCount___sentences' |
+  'avatar___childMdx___wordCount___words' |
+  'avatar___childMdx___fields___slug' |
+  'avatar___childMdx___id' |
+  'avatar___childMdx___parent___id' |
+  'avatar___childMdx___parent___children' |
+  'avatar___childMdx___children' |
+  'avatar___childMdx___children___id' |
+  'avatar___childMdx___children___children' |
+  'avatar___childMdx___internal___content' |
+  'avatar___childMdx___internal___contentDigest' |
+  'avatar___childMdx___internal___description' |
+  'avatar___childMdx___internal___fieldOwners' |
+  'avatar___childMdx___internal___ignoreType' |
+  'avatar___childMdx___internal___mediaType' |
+  'avatar___childMdx___internal___owner' |
+  'avatar___childMdx___internal___type' |
+  'description';
 
 export type AuthorsJsonFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -164,6 +398,8 @@ export type AuthorsJsonFilterInput = {
   url?: Maybe<StringQueryOperatorInput>;
   twitter?: Maybe<StringQueryOperatorInput>;
   github?: Maybe<StringQueryOperatorInput>;
+  avatar?: Maybe<FileFilterInput>;
+  description?: Maybe<StringQueryOperatorInput>;
 };
 
 export type AuthorsJsonFilterListInput = {
@@ -890,6 +1126,76 @@ export type FileFieldsEnum =
   'childrenAuthorsJson___url' |
   'childrenAuthorsJson___twitter' |
   'childrenAuthorsJson___github' |
+  'childrenAuthorsJson___avatar___sourceInstanceName' |
+  'childrenAuthorsJson___avatar___absolutePath' |
+  'childrenAuthorsJson___avatar___relativePath' |
+  'childrenAuthorsJson___avatar___extension' |
+  'childrenAuthorsJson___avatar___size' |
+  'childrenAuthorsJson___avatar___prettySize' |
+  'childrenAuthorsJson___avatar___modifiedTime' |
+  'childrenAuthorsJson___avatar___accessTime' |
+  'childrenAuthorsJson___avatar___changeTime' |
+  'childrenAuthorsJson___avatar___birthTime' |
+  'childrenAuthorsJson___avatar___root' |
+  'childrenAuthorsJson___avatar___dir' |
+  'childrenAuthorsJson___avatar___base' |
+  'childrenAuthorsJson___avatar___ext' |
+  'childrenAuthorsJson___avatar___name' |
+  'childrenAuthorsJson___avatar___relativeDirectory' |
+  'childrenAuthorsJson___avatar___dev' |
+  'childrenAuthorsJson___avatar___mode' |
+  'childrenAuthorsJson___avatar___nlink' |
+  'childrenAuthorsJson___avatar___uid' |
+  'childrenAuthorsJson___avatar___gid' |
+  'childrenAuthorsJson___avatar___rdev' |
+  'childrenAuthorsJson___avatar___ino' |
+  'childrenAuthorsJson___avatar___atimeMs' |
+  'childrenAuthorsJson___avatar___mtimeMs' |
+  'childrenAuthorsJson___avatar___ctimeMs' |
+  'childrenAuthorsJson___avatar___atime' |
+  'childrenAuthorsJson___avatar___mtime' |
+  'childrenAuthorsJson___avatar___ctime' |
+  'childrenAuthorsJson___avatar___birthtime' |
+  'childrenAuthorsJson___avatar___birthtimeMs' |
+  'childrenAuthorsJson___avatar___blksize' |
+  'childrenAuthorsJson___avatar___blocks' |
+  'childrenAuthorsJson___avatar___publicURL' |
+  'childrenAuthorsJson___avatar___childImageSharp___id' |
+  'childrenAuthorsJson___avatar___childImageSharp___children' |
+  'childrenAuthorsJson___avatar___id' |
+  'childrenAuthorsJson___avatar___parent___id' |
+  'childrenAuthorsJson___avatar___parent___children' |
+  'childrenAuthorsJson___avatar___children' |
+  'childrenAuthorsJson___avatar___children___id' |
+  'childrenAuthorsJson___avatar___children___children' |
+  'childrenAuthorsJson___avatar___internal___content' |
+  'childrenAuthorsJson___avatar___internal___contentDigest' |
+  'childrenAuthorsJson___avatar___internal___description' |
+  'childrenAuthorsJson___avatar___internal___fieldOwners' |
+  'childrenAuthorsJson___avatar___internal___ignoreType' |
+  'childrenAuthorsJson___avatar___internal___mediaType' |
+  'childrenAuthorsJson___avatar___internal___owner' |
+  'childrenAuthorsJson___avatar___internal___type' |
+  'childrenAuthorsJson___avatar___childrenAuthorsJson' |
+  'childrenAuthorsJson___avatar___childrenAuthorsJson___id' |
+  'childrenAuthorsJson___avatar___childrenAuthorsJson___children' |
+  'childrenAuthorsJson___avatar___childrenAuthorsJson___name' |
+  'childrenAuthorsJson___avatar___childrenAuthorsJson___url' |
+  'childrenAuthorsJson___avatar___childrenAuthorsJson___twitter' |
+  'childrenAuthorsJson___avatar___childrenAuthorsJson___github' |
+  'childrenAuthorsJson___avatar___childrenAuthorsJson___description' |
+  'childrenAuthorsJson___avatar___childMdx___rawBody' |
+  'childrenAuthorsJson___avatar___childMdx___fileAbsolutePath' |
+  'childrenAuthorsJson___avatar___childMdx___body' |
+  'childrenAuthorsJson___avatar___childMdx___excerpt' |
+  'childrenAuthorsJson___avatar___childMdx___headings' |
+  'childrenAuthorsJson___avatar___childMdx___html' |
+  'childrenAuthorsJson___avatar___childMdx___mdxAST' |
+  'childrenAuthorsJson___avatar___childMdx___tableOfContents' |
+  'childrenAuthorsJson___avatar___childMdx___timeToRead' |
+  'childrenAuthorsJson___avatar___childMdx___id' |
+  'childrenAuthorsJson___avatar___childMdx___children' |
+  'childrenAuthorsJson___description' |
   'childMdx___rawBody' |
   'childMdx___fileAbsolutePath' |
   'childMdx___frontmatter___author___id' |
@@ -898,9 +1204,11 @@ export type FileFieldsEnum =
   'childMdx___frontmatter___author___url' |
   'childMdx___frontmatter___author___twitter' |
   'childMdx___frontmatter___author___github' |
+  'childMdx___frontmatter___author___description' |
   'childMdx___frontmatter___title' |
   'childMdx___frontmatter___date' |
   'childMdx___frontmatter___categories' |
+  'childMdx___frontmatter___tags' |
   'childMdx___frontmatter___featuredImage___sourceInstanceName' |
   'childMdx___frontmatter___featuredImage___absolutePath' |
   'childMdx___frontmatter___featuredImage___relativePath' |
@@ -939,7 +1247,6 @@ export type FileFieldsEnum =
   'childMdx___frontmatter___featuredImage___children' |
   'childMdx___frontmatter___featuredImage___childrenAuthorsJson' |
   'childMdx___frontmatter___fullWidth' |
-  'childMdx___frontmatter___tags' |
   'childMdx___frontmatter___subtitle' |
   'childMdx___body' |
   'childMdx___excerpt' |
@@ -1067,9 +1374,9 @@ export type Frontmatter = {
   title?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['Date']>;
   categories?: Maybe<Array<Maybe<Scalars['String']>>>;
+  tags?: Maybe<Array<Maybe<Scalars['String']>>>;
   featuredImage?: Maybe<File>;
   fullWidth?: Maybe<Scalars['Boolean']>;
-  tags?: Maybe<Array<Maybe<Scalars['String']>>>;
   subtitle?: Maybe<Scalars['String']>;
 };
 
@@ -1086,9 +1393,9 @@ export type FrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
   categories?: Maybe<StringQueryOperatorInput>;
+  tags?: Maybe<StringQueryOperatorInput>;
   featuredImage?: Maybe<FileFilterInput>;
   fullWidth?: Maybe<BooleanQueryOperatorInput>;
-  tags?: Maybe<StringQueryOperatorInput>;
   subtitle?: Maybe<StringQueryOperatorInput>;
 };
 
@@ -1724,9 +2031,48 @@ export type MdxFieldsEnum =
   'frontmatter___author___url' |
   'frontmatter___author___twitter' |
   'frontmatter___author___github' |
+  'frontmatter___author___avatar___sourceInstanceName' |
+  'frontmatter___author___avatar___absolutePath' |
+  'frontmatter___author___avatar___relativePath' |
+  'frontmatter___author___avatar___extension' |
+  'frontmatter___author___avatar___size' |
+  'frontmatter___author___avatar___prettySize' |
+  'frontmatter___author___avatar___modifiedTime' |
+  'frontmatter___author___avatar___accessTime' |
+  'frontmatter___author___avatar___changeTime' |
+  'frontmatter___author___avatar___birthTime' |
+  'frontmatter___author___avatar___root' |
+  'frontmatter___author___avatar___dir' |
+  'frontmatter___author___avatar___base' |
+  'frontmatter___author___avatar___ext' |
+  'frontmatter___author___avatar___name' |
+  'frontmatter___author___avatar___relativeDirectory' |
+  'frontmatter___author___avatar___dev' |
+  'frontmatter___author___avatar___mode' |
+  'frontmatter___author___avatar___nlink' |
+  'frontmatter___author___avatar___uid' |
+  'frontmatter___author___avatar___gid' |
+  'frontmatter___author___avatar___rdev' |
+  'frontmatter___author___avatar___ino' |
+  'frontmatter___author___avatar___atimeMs' |
+  'frontmatter___author___avatar___mtimeMs' |
+  'frontmatter___author___avatar___ctimeMs' |
+  'frontmatter___author___avatar___atime' |
+  'frontmatter___author___avatar___mtime' |
+  'frontmatter___author___avatar___ctime' |
+  'frontmatter___author___avatar___birthtime' |
+  'frontmatter___author___avatar___birthtimeMs' |
+  'frontmatter___author___avatar___blksize' |
+  'frontmatter___author___avatar___blocks' |
+  'frontmatter___author___avatar___publicURL' |
+  'frontmatter___author___avatar___id' |
+  'frontmatter___author___avatar___children' |
+  'frontmatter___author___avatar___childrenAuthorsJson' |
+  'frontmatter___author___description' |
   'frontmatter___title' |
   'frontmatter___date' |
   'frontmatter___categories' |
+  'frontmatter___tags' |
   'frontmatter___featuredImage___sourceInstanceName' |
   'frontmatter___featuredImage___absolutePath' |
   'frontmatter___featuredImage___relativePath' |
@@ -1784,6 +2130,7 @@ export type MdxFieldsEnum =
   'frontmatter___featuredImage___childrenAuthorsJson___url' |
   'frontmatter___featuredImage___childrenAuthorsJson___twitter' |
   'frontmatter___featuredImage___childrenAuthorsJson___github' |
+  'frontmatter___featuredImage___childrenAuthorsJson___description' |
   'frontmatter___featuredImage___childMdx___rawBody' |
   'frontmatter___featuredImage___childMdx___fileAbsolutePath' |
   'frontmatter___featuredImage___childMdx___body' |
@@ -1796,7 +2143,6 @@ export type MdxFieldsEnum =
   'frontmatter___featuredImage___childMdx___id' |
   'frontmatter___featuredImage___childMdx___children' |
   'frontmatter___fullWidth' |
-  'frontmatter___tags' |
   'frontmatter___subtitle' |
   'body' |
   'excerpt' |
@@ -2143,15 +2489,15 @@ export type QuerySitePageArgs = {
   internalComponentName?: Maybe<StringQueryOperatorInput>;
   componentChunkName?: Maybe<StringQueryOperatorInput>;
   matchPath?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
   context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
 };
 
 
@@ -2166,6 +2512,8 @@ export type QueryAllSitePageArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2242,6 +2590,8 @@ export type QueryAuthorsJsonArgs = {
   url?: Maybe<StringQueryOperatorInput>;
   twitter?: Maybe<StringQueryOperatorInput>;
   github?: Maybe<StringQueryOperatorInput>;
+  avatar?: Maybe<FileFilterInput>;
+  description?: Maybe<StringQueryOperatorInput>;
 };
 
 
@@ -2297,6 +2647,8 @@ export type QueryAllSitePluginArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
+  port?: Maybe<Scalars['Int']>;
+  host?: Maybe<Scalars['String']>;
   pathPrefix?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   id: Scalars['ID'];
@@ -2514,6 +2866,8 @@ export type SiteFieldsEnum =
   'siteMetadata___social___instagram' |
   'siteMetadata___social___vimeo' |
   'siteMetadata___social___youtube' |
+  'port' |
+  'host' |
   'pathPrefix' |
   'polyfill' |
   'id' |
@@ -2606,6 +2960,8 @@ export type SiteFieldsEnum =
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2629,15 +2985,15 @@ export type SitePage = Node & {
   internalComponentName: Scalars['String'];
   componentChunkName: Scalars['String'];
   matchPath?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  parent?: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
   context?: Maybe<SitePageContext>;
   pluginCreator?: Maybe<SitePlugin>;
   pluginCreatorId?: Maybe<Scalars['String']>;
   componentPath?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
 };
 
 export type SitePageConnection = {
@@ -2670,6 +3026,8 @@ export type SitePageContext = {
   skip?: Maybe<Scalars['Int']>;
   numPages?: Maybe<Scalars['Int']>;
   currentPage?: Maybe<Scalars['Int']>;
+  type?: Maybe<Scalars['String']>;
+  fieldValue?: Maybe<Scalars['String']>;
   frontmatter?: Maybe<SitePageContextFrontmatter>;
 };
 
@@ -2682,6 +3040,8 @@ export type SitePageContextFilterInput = {
   skip?: Maybe<IntQueryOperatorInput>;
   numPages?: Maybe<IntQueryOperatorInput>;
   currentPage?: Maybe<IntQueryOperatorInput>;
+  type?: Maybe<StringQueryOperatorInput>;
+  fieldValue?: Maybe<StringQueryOperatorInput>;
   frontmatter?: Maybe<SitePageContextFrontmatterFilterInput>;
 };
 
@@ -2697,6 +3057,9 @@ export type SitePageContextNext = {
   id?: Maybe<Scalars['String']>;
   frontmatter?: Maybe<SitePageContextNextFrontmatter>;
   fields?: Maybe<SitePageContextNextFields>;
+  totalCount?: Maybe<Scalars['Int']>;
+  fieldValue?: Maybe<Scalars['String']>;
+  field?: Maybe<Scalars['String']>;
 };
 
 export type SitePageContextNextFields = {
@@ -2711,6 +3074,9 @@ export type SitePageContextNextFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   frontmatter?: Maybe<SitePageContextNextFrontmatterFilterInput>;
   fields?: Maybe<SitePageContextNextFieldsFilterInput>;
+  totalCount?: Maybe<IntQueryOperatorInput>;
+  fieldValue?: Maybe<StringQueryOperatorInput>;
+  field?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageContextNextFrontmatter = {
@@ -2725,6 +3091,9 @@ export type SitePageContextPrevious = {
   id?: Maybe<Scalars['String']>;
   frontmatter?: Maybe<SitePageContextPreviousFrontmatter>;
   fields?: Maybe<SitePageContextPreviousFields>;
+  totalCount?: Maybe<Scalars['Int']>;
+  fieldValue?: Maybe<Scalars['String']>;
+  field?: Maybe<Scalars['String']>;
 };
 
 export type SitePageContextPreviousFields = {
@@ -2739,6 +3108,9 @@ export type SitePageContextPreviousFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   frontmatter?: Maybe<SitePageContextPreviousFrontmatterFilterInput>;
   fields?: Maybe<SitePageContextPreviousFieldsFilterInput>;
+  totalCount?: Maybe<IntQueryOperatorInput>;
+  fieldValue?: Maybe<StringQueryOperatorInput>;
+  field?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageContextPreviousFrontmatter = {
@@ -2761,6 +3133,108 @@ export type SitePageFieldsEnum =
   'internalComponentName' |
   'componentChunkName' |
   'matchPath' |
+  'isCreatedByStatefulCreatePages' |
+  'context___previous___id' |
+  'context___previous___frontmatter___title' |
+  'context___previous___fields___slug' |
+  'context___previous___totalCount' |
+  'context___previous___fieldValue' |
+  'context___previous___field' |
+  'context___next___id' |
+  'context___next___frontmatter___title' |
+  'context___next___fields___slug' |
+  'context___next___totalCount' |
+  'context___next___fieldValue' |
+  'context___next___field' |
+  'context___id' |
+  'context___title' |
+  'context___limit' |
+  'context___skip' |
+  'context___numPages' |
+  'context___currentPage' |
+  'context___type' |
+  'context___fieldValue' |
+  'context___frontmatter___title' |
+  'pluginCreator___id' |
+  'pluginCreator___parent___id' |
+  'pluginCreator___parent___parent___id' |
+  'pluginCreator___parent___parent___children' |
+  'pluginCreator___parent___children' |
+  'pluginCreator___parent___children___id' |
+  'pluginCreator___parent___children___children' |
+  'pluginCreator___parent___internal___content' |
+  'pluginCreator___parent___internal___contentDigest' |
+  'pluginCreator___parent___internal___description' |
+  'pluginCreator___parent___internal___fieldOwners' |
+  'pluginCreator___parent___internal___ignoreType' |
+  'pluginCreator___parent___internal___mediaType' |
+  'pluginCreator___parent___internal___owner' |
+  'pluginCreator___parent___internal___type' |
+  'pluginCreator___children' |
+  'pluginCreator___children___id' |
+  'pluginCreator___children___parent___id' |
+  'pluginCreator___children___parent___children' |
+  'pluginCreator___children___children' |
+  'pluginCreator___children___children___id' |
+  'pluginCreator___children___children___children' |
+  'pluginCreator___children___internal___content' |
+  'pluginCreator___children___internal___contentDigest' |
+  'pluginCreator___children___internal___description' |
+  'pluginCreator___children___internal___fieldOwners' |
+  'pluginCreator___children___internal___ignoreType' |
+  'pluginCreator___children___internal___mediaType' |
+  'pluginCreator___children___internal___owner' |
+  'pluginCreator___children___internal___type' |
+  'pluginCreator___internal___content' |
+  'pluginCreator___internal___contentDigest' |
+  'pluginCreator___internal___description' |
+  'pluginCreator___internal___fieldOwners' |
+  'pluginCreator___internal___ignoreType' |
+  'pluginCreator___internal___mediaType' |
+  'pluginCreator___internal___owner' |
+  'pluginCreator___internal___type' |
+  'pluginCreator___resolve' |
+  'pluginCreator___name' |
+  'pluginCreator___version' |
+  'pluginCreator___pluginOptions___fonts' |
+  'pluginCreator___pluginOptions___fonts___family' |
+  'pluginCreator___pluginOptions___siteId' |
+  'pluginCreator___pluginOptions___path' |
+  'pluginCreator___pluginOptions___name' |
+  'pluginCreator___pluginOptions___extensions' |
+  'pluginCreator___pluginOptions___defaultLayouts___default' |
+  'pluginCreator___pluginOptions___defaultLayouts___blog' |
+  'pluginCreator___pluginOptions___trackingId' |
+  'pluginCreator___pluginOptions___publisherId' |
+  'pluginCreator___pluginOptions___short_name' |
+  'pluginCreator___pluginOptions___start_url' |
+  'pluginCreator___pluginOptions___background_color' |
+  'pluginCreator___pluginOptions___theme_color' |
+  'pluginCreator___pluginOptions___display' |
+  'pluginCreator___pluginOptions___icon' |
+  'pluginCreator___pluginOptions___pathCheck' |
+  'pluginCreator___nodeAPIs' |
+  'pluginCreator___browserAPIs' |
+  'pluginCreator___ssrAPIs' |
+  'pluginCreator___pluginFilepath' |
+  'pluginCreator___packageJson___name' |
+  'pluginCreator___packageJson___description' |
+  'pluginCreator___packageJson___version' |
+  'pluginCreator___packageJson___main' |
+  'pluginCreator___packageJson___author' |
+  'pluginCreator___packageJson___license' |
+  'pluginCreator___packageJson___dependencies' |
+  'pluginCreator___packageJson___dependencies___name' |
+  'pluginCreator___packageJson___dependencies___version' |
+  'pluginCreator___packageJson___devDependencies' |
+  'pluginCreator___packageJson___devDependencies___name' |
+  'pluginCreator___packageJson___devDependencies___version' |
+  'pluginCreator___packageJson___peerDependencies' |
+  'pluginCreator___packageJson___peerDependencies___name' |
+  'pluginCreator___packageJson___peerDependencies___version' |
+  'pluginCreator___packageJson___keywords' |
+  'pluginCreatorId' |
+  'componentPath' |
   'id' |
   'parent___id' |
   'parent___parent___id' |
@@ -2846,101 +3320,7 @@ export type SitePageFieldsEnum =
   'internal___ignoreType' |
   'internal___mediaType' |
   'internal___owner' |
-  'internal___type' |
-  'isCreatedByStatefulCreatePages' |
-  'context___previous___id' |
-  'context___previous___frontmatter___title' |
-  'context___previous___fields___slug' |
-  'context___next___id' |
-  'context___next___frontmatter___title' |
-  'context___next___fields___slug' |
-  'context___id' |
-  'context___title' |
-  'context___limit' |
-  'context___skip' |
-  'context___numPages' |
-  'context___currentPage' |
-  'context___frontmatter___title' |
-  'pluginCreator___id' |
-  'pluginCreator___parent___id' |
-  'pluginCreator___parent___parent___id' |
-  'pluginCreator___parent___parent___children' |
-  'pluginCreator___parent___children' |
-  'pluginCreator___parent___children___id' |
-  'pluginCreator___parent___children___children' |
-  'pluginCreator___parent___internal___content' |
-  'pluginCreator___parent___internal___contentDigest' |
-  'pluginCreator___parent___internal___description' |
-  'pluginCreator___parent___internal___fieldOwners' |
-  'pluginCreator___parent___internal___ignoreType' |
-  'pluginCreator___parent___internal___mediaType' |
-  'pluginCreator___parent___internal___owner' |
-  'pluginCreator___parent___internal___type' |
-  'pluginCreator___children' |
-  'pluginCreator___children___id' |
-  'pluginCreator___children___parent___id' |
-  'pluginCreator___children___parent___children' |
-  'pluginCreator___children___children' |
-  'pluginCreator___children___children___id' |
-  'pluginCreator___children___children___children' |
-  'pluginCreator___children___internal___content' |
-  'pluginCreator___children___internal___contentDigest' |
-  'pluginCreator___children___internal___description' |
-  'pluginCreator___children___internal___fieldOwners' |
-  'pluginCreator___children___internal___ignoreType' |
-  'pluginCreator___children___internal___mediaType' |
-  'pluginCreator___children___internal___owner' |
-  'pluginCreator___children___internal___type' |
-  'pluginCreator___internal___content' |
-  'pluginCreator___internal___contentDigest' |
-  'pluginCreator___internal___description' |
-  'pluginCreator___internal___fieldOwners' |
-  'pluginCreator___internal___ignoreType' |
-  'pluginCreator___internal___mediaType' |
-  'pluginCreator___internal___owner' |
-  'pluginCreator___internal___type' |
-  'pluginCreator___resolve' |
-  'pluginCreator___name' |
-  'pluginCreator___version' |
-  'pluginCreator___pluginOptions___fonts' |
-  'pluginCreator___pluginOptions___fonts___family' |
-  'pluginCreator___pluginOptions___siteId' |
-  'pluginCreator___pluginOptions___path' |
-  'pluginCreator___pluginOptions___name' |
-  'pluginCreator___pluginOptions___extensions' |
-  'pluginCreator___pluginOptions___defaultLayouts___default' |
-  'pluginCreator___pluginOptions___defaultLayouts___blog' |
-  'pluginCreator___pluginOptions___trackingId' |
-  'pluginCreator___pluginOptions___publisherId' |
-  'pluginCreator___pluginOptions___short_name' |
-  'pluginCreator___pluginOptions___start_url' |
-  'pluginCreator___pluginOptions___background_color' |
-  'pluginCreator___pluginOptions___theme_color' |
-  'pluginCreator___pluginOptions___display' |
-  'pluginCreator___pluginOptions___icon' |
-  'pluginCreator___pluginOptions___pathCheck' |
-  'pluginCreator___nodeAPIs' |
-  'pluginCreator___browserAPIs' |
-  'pluginCreator___ssrAPIs' |
-  'pluginCreator___pluginFilepath' |
-  'pluginCreator___packageJson___name' |
-  'pluginCreator___packageJson___description' |
-  'pluginCreator___packageJson___version' |
-  'pluginCreator___packageJson___main' |
-  'pluginCreator___packageJson___author' |
-  'pluginCreator___packageJson___license' |
-  'pluginCreator___packageJson___dependencies' |
-  'pluginCreator___packageJson___dependencies___name' |
-  'pluginCreator___packageJson___dependencies___version' |
-  'pluginCreator___packageJson___devDependencies' |
-  'pluginCreator___packageJson___devDependencies___name' |
-  'pluginCreator___packageJson___devDependencies___version' |
-  'pluginCreator___packageJson___peerDependencies' |
-  'pluginCreator___packageJson___peerDependencies___name' |
-  'pluginCreator___packageJson___peerDependencies___version' |
-  'pluginCreator___packageJson___keywords' |
-  'pluginCreatorId' |
-  'componentPath';
+  'internal___type';
 
 export type SitePageFilterInput = {
   path?: Maybe<StringQueryOperatorInput>;
@@ -2948,15 +3328,15 @@ export type SitePageFilterInput = {
   internalComponentName?: Maybe<StringQueryOperatorInput>;
   componentChunkName?: Maybe<StringQueryOperatorInput>;
   matchPath?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
   context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
 };
 
 export type SitePageGroupConnection = {
@@ -3368,10 +3748,30 @@ export type StringQueryOperatorInput = {
   glob?: Maybe<Scalars['String']>;
 };
 
+export type AuthorsQueryVariables = {};
+
+
+export type AuthorsQuery = { allMdx: { group: Array<(
+      Pick<MdxGroupConnection, 'fieldValue' | 'totalCount'>
+      & { edges: Array<{ node: { frontmatter: Maybe<(
+            Pick<Frontmatter, 'title' | 'date'>
+            & { author: Maybe<Pick<AuthorsJson, 'name'>> }
+          )>, fields: Maybe<Pick<MdxFields, 'slug'>> } }> }
+    )> }, allAuthorsJson: { edges: Array<{ node: (
+        Pick<AuthorsJson, 'name'>
+        & { avatar: Maybe<{ childImageSharp: Maybe<{ fluid: Maybe<Pick<ImageSharpFluid, 'src'>> }> }> }
+      ) }> } };
+
 export type CategoriesQueryVariables = {};
 
 
-export type CategoriesQuery = { allMdx: { group: Array<Pick<MdxGroupConnection, 'fieldValue' | 'totalCount'>> } };
+export type CategoriesQuery = { allMdx: { group: Array<(
+      Pick<MdxGroupConnection, 'fieldValue' | 'totalCount'>
+      & { edges: Array<{ node: { frontmatter: Maybe<(
+            Pick<Frontmatter, 'title' | 'date'>
+            & { author: Maybe<Pick<AuthorsJson, 'name'>> }
+          )>, fields: Maybe<Pick<MdxFields, 'slug'>> } }> }
+    )> } };
 
 export type BlogListQueryVariables = {
   skip: Scalars['Int'];
@@ -3387,6 +3787,24 @@ export type BlogListQuery = { allMdx: { edges: Array<{ node: (
         )> }
       ) }> } };
 
+export type AuthorQueryVariables = {
+  fieldValue: Scalars['String'];
+  skip: Scalars['Int'];
+  limit: Scalars['Int'];
+};
+
+
+export type AuthorQuery = { allMdx: { edges: Array<{ node: (
+        Pick<Mdx, 'id'>
+        & { fields: Maybe<Pick<MdxFields, 'slug'>>, frontmatter: Maybe<(
+          Pick<Frontmatter, 'title' | 'date'>
+          & { author: Maybe<Pick<AuthorsJson, 'name'>> }
+        )> }
+      ) }> }, authorsJson: Maybe<(
+    Pick<AuthorsJson, 'name' | 'description' | 'twitter' | 'url' | 'github'>
+    & { avatar: Maybe<{ childImageSharp: Maybe<{ fluid: Maybe<Pick<ImageSharpFluid, 'src'>> }> }> }
+  )> };
+
 export type BlogPostQueryQueryVariables = {
   id?: Maybe<Scalars['String']>;
 };
@@ -3399,6 +3817,21 @@ export type BlogPostQueryQuery = { mdx: Maybe<(
       & { author: Maybe<Pick<AuthorsJson, 'id' | 'name' | 'url' | 'twitter' | 'github'>>, featuredImage: Maybe<{ childImageSharp: Maybe<{ fluid: Maybe<Pick<ImageSharpFluid, 'srcSet' | 'src'>> }> }> }
     )> }
   )> };
+
+export type CategoryQueryVariables = {
+  fieldValue: Scalars['String'];
+  skip: Scalars['Int'];
+  limit: Scalars['Int'];
+};
+
+
+export type CategoryQuery = { allMdx: { edges: Array<{ node: (
+        Pick<Mdx, 'id'>
+        & { fields: Maybe<Pick<MdxFields, 'slug'>>, frontmatter: Maybe<(
+          Pick<Frontmatter, 'title' | 'date'>
+          & { author: Maybe<Pick<AuthorsJson, 'name'>> }
+        )> }
+      ) }> } };
 
 export type AllPostsQueryVariables = {};
 
