@@ -37,12 +37,12 @@ function AuthorBox({ author: { name, url, twitter, github, avatar, description }
       <Avatar className={classes.avatar} alt={name} src={img}>
         {!img ? <AuthorIcon /> : null}
       </Avatar>
-      <Box display="flex" flexDirection="column" pl={4}>
+      <Box display="flex" flexDirection="column" pl={2}>
         <Typography variant="h6">{name}</Typography>
         <Typography variant="body2" gutterBottom>
           {description}
         </Typography>
-        <div>
+        <Typography variant="body2">
           {twitter ? (
             <MuiLink className={classes.item} href={`https://twitter.com/${twitter}`} color="inherit">
               <TwitterIcon />
@@ -58,7 +58,7 @@ function AuthorBox({ author: { name, url, twitter, github, avatar, description }
               <GitHubIcon />
             </MuiLink>
           ) : null}
-        </div>
+        </Typography>
         {!disableLink ? (
           <Typography variant="body2">
             <AppLink to={`/author/${name}`}>記事一覧へ</AppLink>

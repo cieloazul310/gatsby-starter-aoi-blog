@@ -6,27 +6,34 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import ListItemAppLink from 'gatsby-theme-aoi/src/components/ListItemAppLink';
-import { SitePageContext } from '../../graphql-types';
 
-type Props = Partial<Pick<SitePageContext, 'previous' | 'next'>>;
+interface Navigation {
+  to: string;
+  title: string;
+}
+
+interface Props {
+  previous?: Navigation;
+  next?: Navigation;
+}
 
 function DrawerPageNavigation({ previous, next }: Props) {
   return (
     <List subheader={<ListSubheader>Navigation</ListSubheader>}>
       {previous ? (
-        <ListItemAppLink button to={previous.fields.slug}>
+        <ListItemAppLink button to={previous.to}>
           <ListItemIcon>
             <ArrowBackIcon />
           </ListItemIcon>
-          <ListItemText primary={previous.frontmatter.title} secondary="prev" />
+          <ListItemText primary={previous.title} secondary="prev" />
         </ListItemAppLink>
       ) : null}
       {next ? (
-        <ListItemAppLink button to={next.fields.slug}>
+        <ListItemAppLink button to={next.to}>
           <ListItemIcon>
             <ArrowForwardIcon />
           </ListItemIcon>
-          <ListItemText primary={next.frontmatter.title} secondary="next" />
+          <ListItemText primary={next.title} secondary="next" />
         </ListItemAppLink>
       ) : null}
     </List>

@@ -5,9 +5,10 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Divider from '@material-ui/core/Divider';
 import Layout from 'gatsby-theme-aoi/src/layouts/JumbotronLayout';
 import Jumbotron from '../components/Jumbotron';
-import DrawerPageNavigation from '../components/DrawerPageNavigation';
+import DrawerPageNavigation from '../components/blog-post/DrawerPageNavigation';
+import BlogPostFooter from '../components/blog-post/BlogPostFooter';
 import AuthorBox from '../components/AuthorBox';
-import PageNavigation from '../components/PageNavigation';
+import PageNavigation from '../components/blog-post/PageNavigation';
 import { AdInArticle, AdInFooter } from '../components/ads';
 import muiComponents from '../utils/muiComponents';
 import { viewportsHelper } from 'gatsby-theme-aoi/src/utils/layoutViewports';
@@ -21,7 +22,7 @@ interface Props {
 }
 
 function BlogPostTemplate({ pageContext, data: { mdx } }: Props) {
-  const { title, subtitle, date, fullWidth, featuredImage, author } = mdx.frontmatter;
+  const { title, subtitle, date, fullWidth, featuredImage, author, categories, tags } = mdx.frontmatter;
   const { previous, next } = pageContext;
   const componentViewports = viewportsHelper({
     Fab: fullWidth ? true : 'smDown',
@@ -43,12 +44,10 @@ function BlogPostTemplate({ pageContext, data: { mdx } }: Props) {
         <MDXRenderer>{mdx.body}</MDXRenderer>
       </MDXProvider>
       <Divider />
+      <BlogPostFooter date={date} categories={categories} tags={tags} />
+      <Divider />
       <AuthorBox author={author} py={4} />
-      <PageNavigation
-        previous={previous ? { to: previous.fields.slug, title: previous.frontmatter.title } : null}
-        next={next ? { to: next.fields.slug, title: next.frontmatter.title } : null}
-        center={{ to: '/blog', title: 'All Posts' }}
-      />
+      <PageNavigation previous={previous} next={next} />
       <AdInFooter />
     </Layout>
   );
