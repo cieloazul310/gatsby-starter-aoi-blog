@@ -6,7 +6,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 // icons
 import SportsHandballIcon from '@material-ui/icons/SportsHandball';
-import { HomeIcon, AllPostsIcon, CategoryIcon, TagIcon, AuthorIcon } from '../../../icons';
+import { HomeIcon, AllPostsIcon, CategoryIcon, TagIcon, AuthorIcon, ArchiveIcon } from '../../../icons';
 import ListItemAppLink from 'gatsby-theme-aoi/src/components/ListItemAppLink';
 import { useLocation } from '@reach/router';
 
@@ -31,6 +31,12 @@ function Contents() {
           <AllPostsIcon />
         </ListItemIcon>
         <ListItemText primary="All Posts" />
+      </ListItemAppLink>
+      <ListItemAppLink to="/archive/" button selected={pathname === withPrefix('/archive/')} role="menuitem">
+        <ListItemIcon>
+          <ArchiveIcon />
+        </ListItemIcon>
+        <ListItemText primary="Archive" />
       </ListItemAppLink>
       <ListItemAppLink to="/category/" button selected={pathname === withPrefix('/category/')} role="menuitem">
         <ListItemIcon>

@@ -5,14 +5,17 @@ import ListItemLink from 'gatsby-theme-aoi/src/components/ListItemLink';
 import { useAllMonths } from '../utils/useAllPosts';
 
 interface Props {
+  current?: string;
   button?: boolean;
   inset?: boolean;
+  subheader?: boolean;
 }
 
-function ArchiveList({ button = false, inset = false }: Props) {
+function ArchiveList({ current, subheader = false, button = false, inset = false }: Props) {
   const allMonths = useAllMonths();
+  
   return (
-    <List subheader={<ListSubheader>Archive</ListSubheader>}>
+    <List subheader={subheader ? <ListSubheader>Archive</ListSubheader> : null}>
       {allMonths.map(item => (
         <ListItemLink
           key={item.key}
@@ -21,6 +24,7 @@ function ArchiveList({ button = false, inset = false }: Props) {
           secondaryText={`${item.totalCount} posts`}
           button={button}
           inset={inset}
+          selected={item.key === current}
         />
       ))}
     </List>

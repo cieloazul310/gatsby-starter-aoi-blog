@@ -24,12 +24,14 @@ function TagTemplate({ data, pageContext }: Props) {
     next
   } = pageContext;
   return (
-    <Layout title={fieldValue} jumbotron={<Jumbotron title={`#${fieldValue}`} header={type} subtitle={`${edges.length} posts`} />} drawerContents={<DrawerPageNavigation {...createNavigationProps(previous, next, '/tag')} />}>
+    <Layout
+      title={fieldValue}
+      maxWidth="md"
+      jumbotron={<Jumbotron title={`#${fieldValue}`} header={type} subtitle={`${edges.length} posts`} />}
+      drawerContents={<DrawerPageNavigation {...createNavigationProps(previous, next, '/tag')} />}
+    >
       <BlogListTemplate edges={edges} numPages={numPages} currentPage={currentPage} basePath={`/tag/${fieldValue}`} />
-      <PageNavigation
-        {...createNavigationProps(previous, next, '/tag')}
-        center={{ to: '/tag', title: 'Tag' }}
-      />
+      <PageNavigation {...createNavigationProps(previous, next, '/tag')} center={{ to: '/tag', title: 'Tag' }} />
     </Layout>
   );
 }

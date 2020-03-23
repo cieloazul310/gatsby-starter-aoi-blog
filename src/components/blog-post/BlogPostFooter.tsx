@@ -27,7 +27,7 @@ function BlogPostFooter({ date, categories, tags }: Props) {
         <Typography>
           Category:{' '}
           {categories.map((category, index) => (
-            <AppLink className={classes.link} to={`/category/${category}`}>
+            <AppLink key={category} className={classes.link} to={`/category/${category}`}>
               {category}
             </AppLink>
           ))}
@@ -37,7 +37,7 @@ function BlogPostFooter({ date, categories, tags }: Props) {
         <Typography>
           Tags:{' '}
           {tags.map((tag, index) => (
-            <AppLink className={classes.link} to={`/tag/${tag}`}>{`#${tag}`}</AppLink>
+            <AppLink key={tag} className={classes.link} to={`/tag/${tag}`}>{`#${tag}`}</AppLink>
           ))}
         </Typography>
       ) : null}

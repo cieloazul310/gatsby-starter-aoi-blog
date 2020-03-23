@@ -30,7 +30,7 @@ function TagPage() {
   const { group } = data.allMdx;
   const classes = useStyles();
   return (
-    <Layout title="Tag" jumbotron={<Jumbotron title="Tag" />}>
+    <Layout title="Tag" maxWidth="md" jumbotron={<Jumbotron title="Tag" />}>
       {group
         .sort((a, b) => b.totalCount - a.totalCount)
         .map((tag, index) => (

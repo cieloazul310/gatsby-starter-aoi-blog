@@ -252,18 +252,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     Array.from({ length: numPages }).forEach((_, i) => {
       createPage({
         path: i === 0 ? `/blog/${year}/${month}` : `/blog/${year}/${month}/${i + 1}`,
-        component: path.resolve('./src/templates/monthly.tsx'),
+        component: path.resolve('./src/templates/archive.tsx'),
         context: {
           previous,
           next,
-          type: 'Monthly',
+          type: 'Archive',
           year,
           month,
-          gte: `${year}-${month}-01`,
+          gte: `${year}-${month}`,
           lt:
             month === '12'
-              ? `${(parseInt(year, 10) + 1).toString().padStart(2, '0')}-01-01`
-              : `${year}-${(parseInt(month, 10) + 1).toString().padStart(2, '0')}-01`,
+              ? `${(parseInt(year, 10) + 1).toString().padStart(2, '0')}-01`
+              : `${year}-${(parseInt(month, 10) + 1).toString().padStart(2, '0')}`,
           limit: postsPerPage,
           skip: i * postsPerPage,
           numPages,

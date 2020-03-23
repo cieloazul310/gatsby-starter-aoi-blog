@@ -23,6 +23,7 @@ function AllPostsTemplate({ data, pageContext }: Props) {
   return (
     <Layout
       title={fieldValue}
+      maxWidth="md"
       jumbotron={<Jumbotron title={fieldValue} header={type} subtitle={`${edges.length} posts`} image={avatar} />}
       drawerContents={<DrawerPageNavigation {...createNavigationProps(previous, next, '/author')} />}
     >
