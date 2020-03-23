@@ -49,7 +49,7 @@ function CategoriesPage() {
   const { group } = data.allMdx;
   const classes = useStyles();
   return (
-    <Layout title="Category" jumbotron={<Jumbotron title="Category" />}>
+    <Layout title="Category" maxWidth="md" jumbotron={<Jumbotron title="Category" />}>
       <List>
         {group
           .sort((a, b) => b.totalCount - a.totalCount)

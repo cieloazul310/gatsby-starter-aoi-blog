@@ -67,7 +67,7 @@ function AuthorsPage() {
   const authors = data.allAuthorsJson.edges;
   const classes = useStyles();
   return (
-    <Layout title="Author" jumbotron={<Jumbotron title="Author" />}>
+    <Layout title="Author" maxWidth="md" jumbotron={<Jumbotron title="Author" />}>
       <List>
         {group
           .sort((a, b) => b.totalCount - a.totalCount)

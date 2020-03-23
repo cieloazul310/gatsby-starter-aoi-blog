@@ -13,28 +13,38 @@ interface Props {
   pageContext: SitePageContext;
 }
 
-function CategoryTemplate({ data, pageContext }: Props) {
+function TagTemplate({ data, pageContext }: Props) {
   const { edges } = data.allMdx;
-  const { numPages, currentPage, fieldValue, type, previous, next } = pageContext;
+  const {
+    numPages,
+    currentPage,
+    fieldValue,
+    type,
+    previous,
+    next
+  } = pageContext;
   return (
     <Layout
       title={fieldValue}
       maxWidth="md"
-      jumbotron={<Jumbotron title={fieldValue} header={type} subtitle={`${edges.length} posts`} />}
-      drawerContents={<DrawerPageNavigation {...createNavigationProps(previous, next, '/category')} />}
+      jumbotron={<Jumbotron title={`#${fieldValue}`} header={type} subtitle={`${edges.length} posts`} />}
+      drawerContents={<DrawerPageNavigation {...createNavigationProps(previous, next, '/tag')} />}
     >
-      <BlogListTemplate edges={edges} numPages={numPages} currentPage={currentPage} basePath={`/category/${fieldValue}`} />
-      <PageNavigation {...createNavigationProps(previous, next, '/category')} center={{ to: '/category', title: 'Category' }} />
+      <BlogListTemplate edges={edges} numPages={numPages} currentPage={currentPage} basePath={`/tag/${fieldValue}`} />
+      <PageNavigation {...createNavigationProps(previous, next, '/tag')} center={{ to: '/tag', title: 'Tag' }} />
     </Layout>
   );
 }
 
-export default CategoryTemplate;
+export default TagTemplate;
 
-export const categoryQuery = graphql`
-  query category($fieldValue: String!, $skip: Int!, $limit: Int!) {
+export const tagQuery = graphql`
+  query tag($fieldValue: String!, $skip: Int!, $limit: Int!) {
     allMdx(
-      filter: { fileAbsolutePath: { regex: "/content/blog/" }, frontmatter: { categories: { eq: $fieldValue } } }
+      filter: {
+        fileAbsolutePath: { regex: "/content/blog/" }
+        frontmatter: { tags: { eq: $fieldValue } }
+      }
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
       skip: $skip

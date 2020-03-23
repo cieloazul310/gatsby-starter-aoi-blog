@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
-import Box from '@material-ui/core/Box';
 import Layout from 'gatsby-theme-aoi/src/layouts/JumbotronLayout';
 import Jumbotron from '../components/Jumbotron';
 import AuthorBox from '../components/AuthorBox';
+import PageNavigation, { createNavigationProps } from '../components/PageNavigation';
+import DrawerPageNavigation from '../components/DrawerPageNavigation';
 import BlogListTemplate from './blog-list';
 
 import { AuthorQuery, SitePageContext } from '../../graphql-types';
@@ -20,9 +21,15 @@ function AllPostsTemplate({ data, pageContext }: Props) {
   const avatar = authorsJson.avatar && authorsJson.avatar.childImageSharp ? authorsJson.avatar.childImageSharp.fluid.src : null;
 
   return (
-    <Layout title={fieldValue} jumbotron={<Jumbotron title={fieldValue} header={type} image={avatar} />}>
+    <Layout
+      title={fieldValue}
+      maxWidth="md"
+      jumbotron={<Jumbotron title={fieldValue} header={type} subtitle={`${edges.length} posts`} image={avatar} />}
+      drawerContents={<DrawerPageNavigation {...createNavigationProps(previous, next, '/author')} />}
+    >
       <AuthorBox author={authorsJson} disableLink p={2} />
       <BlogListTemplate edges={edges} numPages={numPages} currentPage={currentPage} basePath={`/author/${fieldValue}`} />
+      <PageNavigation {...createNavigationProps(previous, next, '/author')} center={{ to: '/author/', title: 'Author' }} />
     </Layout>
   );
 }

@@ -3,9 +3,7 @@ import Box from '@material-ui/core/Box';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import { AppLinkButton } from 'gatsby-theme-aoi/src/components/AppLink';
-import { SitePageContext } from '../../graphql-types';
 
-//type Props = Partial<Pick<SitePageContext, 'previous' | 'next'>>;
 interface Navigation {
   to: string;
   title: string;
@@ -42,3 +40,23 @@ function PageNavigation({ previous, next, center }: Props) {
 }
 
 export default PageNavigation;
+
+interface HelperProps {
+  fieldValue?: string;
+}
+
+function navigationHelper(input: HelperProps, basePath: string = '') {
+  return input
+    ? {
+        to: `${basePath}/${input.fieldValue}`,
+        title: input.fieldValue
+      }
+    : null;
+}
+
+export function createNavigationProps(previous: HelperProps, next: HelperProps, basePath: string = ''): Pick<Props, 'previous' | 'next'> {
+  return {
+    previous: navigationHelper(previous, basePath),
+    next: navigationHelper(next, basePath)
+  };
+}
