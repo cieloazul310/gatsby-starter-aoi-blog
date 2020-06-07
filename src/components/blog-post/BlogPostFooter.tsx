@@ -7,8 +7,8 @@ import AppLink from 'gatsby-theme-aoi/src/components/AppLink';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     link: {
-      marginRight: theme.spacing(1)
-    }
+      marginRight: theme.spacing(1),
+    },
   })
 );
 

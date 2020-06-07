@@ -5,9 +5,7 @@ import ArchiveList from '../components/ArchiveList';
 
 function ArchivePage() {
   return (
-    <Layout title="Archive" maxWidth="md" jumbotron={
-      <Jumbotron title="Archive" />
-    }>
+    <Layout title="Archive" maxWidth="md" jumbotron={<Jumbotron title="Archive" />}>
       <ArchiveList />
     </Layout>
   );

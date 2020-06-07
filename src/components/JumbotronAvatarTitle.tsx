@@ -6,13 +6,13 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
-      alignItems: 'center'
+      alignItems: 'center',
     },
     avatar: {
       width: theme.spacing(7),
       height: theme.spacing(7),
-      marginRight: theme.spacing(1)
-    }
+      marginRight: theme.spacing(1),
+    },
   })
 );
 
@@ -26,9 +26,7 @@ function JumbotronAvatarTitle({ avatar, title }: Props) {
   return (
     <div className={classes.root}>
       {avatar ? <Avatar className={classes.avatar} alt={title} src={avatar} /> : null}
-      <span>
-        {title}
-      </span>
+      <span>{title}</span>
     </div>
   );
 }

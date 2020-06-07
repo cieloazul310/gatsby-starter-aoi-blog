@@ -7,19 +7,18 @@ import AppLink from 'gatsby-theme-aoi/src/components/AppLink';
 import Jumbotron from '../components/Jumbotron';
 import { AllTagQuery } from '../../graphql-types';
 
-const useStyles = makeStyles((theme: Theme) => createStyles({
-  tag: {
-    marginRight: theme.spacing(1)
-  }
-}));
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    tag: {
+      marginRight: theme.spacing(1),
+    },
+  })
+);
 
 function TagPage() {
   const data = useStaticQuery<AllTagQuery>(graphql`
     query AllTag {
-      allMdx(
-        filter: { fileAbsolutePath: { regex: "/content/blog/" } }
-        sort: { fields: [frontmatter___date], order: DESC }
-      ) {
+      allMdx(filter: { fileAbsolutePath: { regex: "/content/blog/" } }, sort: { fields: [frontmatter___date], order: DESC }) {
         group(field: frontmatter___tags) {
           fieldValue
           totalCount
@@ -35,9 +34,7 @@ function TagPage() {
         .sort((a, b) => b.totalCount - a.totalCount)
         .map((tag, index) => (
           <Typography key={index} component="span" className={classes.tag}>
-            <AppLink to={`/tag/${tag.fieldValue}`}>
-              {`#${tag.fieldValue}`}
-            </AppLink>
+            <AppLink to={`/tag/${tag.fieldValue}`}>{`#${tag.fieldValue}`}</AppLink>
           </Typography>
         ))}
     </Layout>

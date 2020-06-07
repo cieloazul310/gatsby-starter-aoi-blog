@@ -13,10 +13,10 @@ interface Props {
 
 function ArchiveList({ current, subheader = false, button = false, inset = false }: Props) {
   const allMonths = useAllMonths();
-  
+
   return (
     <List subheader={subheader ? <ListSubheader>Archive</ListSubheader> : null}>
-      {allMonths.map(item => (
+      {allMonths.map((item) => (
         <ListItemLink
           key={item.key}
           to={`/blog/${item.year}/${item.month}`}

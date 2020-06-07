@@ -37,14 +37,14 @@ type Month = {
   month: string;
   key: string;
   totalCount: number;
-}
+};
 
 export function useAllMonths(): Month[] {
   const posts = useAllPosts();
   return React.useMemo(() => {
     return posts.reduce((accum, { node }) => {
       const { year, month } = node.frontmatter;
-      const index = accum.map(d => d.key).indexOf(`${year}/${month}`);
+      const index = accum.map((d) => d.key).indexOf(`${year}/${month}`);
       if (index < 0) {
         return [
           ...accum,
@@ -52,8 +52,8 @@ export function useAllMonths(): Month[] {
             year,
             month,
             key: `${year}/${month}`,
-            totalCount: posts.filter(post => post.node.frontmatter.year === year && post.node.frontmatter.month === month).length
-          }
+            totalCount: posts.filter((post) => post.node.frontmatter.year === year && post.node.frontmatter.month === month).length,
+          },
         ];
       } else {
         return accum;

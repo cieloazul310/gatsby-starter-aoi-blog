@@ -8,9 +8,7 @@ function Page() {
       <Typography variant="h2" gutterBottom>
         Hello, World
       </Typography>
-      <Typography paragraph>
-        This is Gatsby Theme Aoi layout example.
-      </Typography>
+      <Typography paragraph>This is Gatsby Theme Aoi layout example.</Typography>
     </Layout>
   );
 }

@@ -3,7 +3,7 @@ import { Link as GatsbyLink } from 'gatsby';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import List from '@material-ui/core/List';
-import Pagination from '@material-ui/lab/Pagination';
+import Pagination, { PaginationRenderItemParams } from '@material-ui/lab/Pagination';
 import PaginationItem from '@material-ui/lab/PaginationItem';
 import ListItemLink from 'gatsby-theme-aoi/src/components/ListItemLink';
 import { AdInFooter } from '../components/ads';
@@ -12,8 +12,8 @@ import { Mdx } from '../../graphql-types';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     ul: {
-      justifyContent: 'center'
-    }
+      justifyContent: 'center',
+    },
   })
 );
 
@@ -47,7 +47,7 @@ function BlogListTemplate({ edges, numPages, currentPage, basePath }: Props) {
           count={numPages}
           defaultPage={currentPage}
           color="primary"
-          renderItem={(item: any) => (
+          renderItem={(item: PaginationRenderItemParams) => (
             <PaginationItem component={GatsbyLink} to={`${basePath}/${item.page === 1 ? '' : `${item.page}`}`} {...item} />
           )}
         />
