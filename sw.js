@@ -27,30 +27,30 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-1201c1d04b34a44f65b9.js"
+    "url": "webpack-runtime-3982b2969dafa0a98dca.js"
+  },
+  {
+    "url": "framework-30276ee69c7434fe7dc9.js"
   },
   {
     "url": "styles.b8221ec0ff064b96422d.css"
   },
   {
-    "url": "styles-4c63b56b5ecb5449d3e3.js"
+    "url": "styles-e0d9611e4e52a12a50bf.js"
   },
   {
-    "url": "commons-9fa4c51e2324f7da4359.js"
-  },
-  {
-    "url": "app-2db026cf828ba99a8c1a.js"
+    "url": "app-439b550ca9335addb76b.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "281bad31d9f8614f694b0e9d269b688c"
+    "revision": "2982e6302030325a4dbc00884c4583fe"
   },
   {
     "url": "google-fonts/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxK.woff2",
     "revision": "479970ffb74f2117317f9d24d9e317fe"
   },
   {
-    "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-b9054a77629744185345.js"
+    "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-5224537b09cbd0556359.js"
   },
   {
     "url": "page-data/offline-plugin-app-shell-fallback/page-data.json",
@@ -58,11 +58,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "297b8d8372dacca517ac981f32d4f573"
+    "revision": "1279e9823b374318122c15b93438938e"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "4c20607d87d34a9a7448c66993159a5e"
+    "revision": "16f21bfb7b505b4d2449ca98577c6127"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -155,7 +155,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/gatsby-theme-aoi-blog/app-2db026cf828ba99a8c1a.js`))) {
+  if (!resources || !(await caches.match(`/gatsby-theme-aoi-blog/app-439b550ca9335addb76b.js`))) {
     return await fetch(event.request)
   }
 
