@@ -12,7 +12,7 @@ const useStyles = makeStyles<Theme, { bgImg: string }>((theme: Theme) =>
       backgroundPosition: 'center',
       backgroundSize: 'cover',
       filter: bgImg ? 'blur(6px) brightness(0.9)' : null,
-      transform: bgImg ? 'scale(1.1)' : null
+      transform: bgImg ? 'scale(1.1)' : null,
     }),
     jumbotronText: {
       height: 280,
@@ -25,12 +25,12 @@ const useStyles = makeStyles<Theme, { bgImg: string }>((theme: Theme) =>
       zIndex: 2,
       padding: theme.spacing(2, 4),
       [theme.breakpoints.down('sm')]: {
-        padding: theme.spacing(2)
-      }
+        padding: theme.spacing(2),
+      },
     },
     jumbotronTitle: {
-      fontWeight: 'bold'
-    }
+      fontWeight: 'bold',
+    },
   })
 );
 

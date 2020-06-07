@@ -26,7 +26,7 @@ function BlogPostTemplate({ pageContext, data: { mdx } }: Props) {
   const { previous, next } = pageContext;
   const componentViewports = viewportsHelper({
     Fab: fullWidth ? true : 'smDown',
-    PermanentDrawer: fullWidth ? false : 'mdUp'
+    PermanentDrawer: fullWidth ? false : 'mdUp',
   });
   const image = featuredImage && featuredImage.childImageSharp ? featuredImage.childImageSharp.fluid.src : null;
   const jumbotron = <Jumbotron title={title} header={`${date} post by ${author.name}`} subtitle={subtitle} image={image} />;

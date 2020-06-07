@@ -12,10 +12,7 @@ interface Props {
 function DefaultTemplate({ children, pageContext }: Props) {
   const { title } = pageContext.frontmatter;
   return (
-    <Layout
-      maxWidth="md"
-      title={title}
-    >
+    <Layout maxWidth="md" title={title}>
       <MDXProvider components={muiComponents}>{children}</MDXProvider>
     </Layout>
   );

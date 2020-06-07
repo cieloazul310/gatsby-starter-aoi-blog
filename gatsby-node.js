@@ -19,7 +19,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       // Generated value based on filepath with "blog" prefix. you
       // don't need a separating "/" before the value because
       // createFilePath returns a path with the leading "/".
-      value: `/blog${value}`
+      value: `/blog${value}`,
     });
   }
 };
@@ -33,7 +33,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       fields: {
         author: {
           type: 'AuthorsJson',
-          resolve: (source, args, context, info) => {
+          resolve: (source, args, context) => {
             // If you were linking by ID, you could use `getNodeById` to
             // find the correct author:
             // return context.nodeModel.getNodeById({
@@ -44,11 +44,11 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
             // you can use `runQuery`, or get all author nodes
             // with `getAllNodes` and manually find the linked author
             // node:
-            return context.nodeModel.getAllNodes({ type: 'AuthorsJson' }).find(author => author.name === source.author);
-          }
-        }
-      }
-    })
+            return context.nodeModel.getAllNodes({ type: 'AuthorsJson' }).find((author) => author.name === source.author);
+          },
+        },
+      },
+    }),
   ];
   createTypes(typeDefs);
 };
@@ -87,7 +87,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     createPage({
       path: node.fields.slug,
       component: path.resolve(`./src/templates/blog-post.tsx`),
-      context: { previous, next, id: node.id }
+      context: { previous, next, id: node.id },
     });
   });
 
@@ -103,8 +103,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         limit: postsPerPage,
         skip: i * postsPerPage,
         numPages,
-        currentPage: i + 1
-      }
+        currentPage: i + 1,
+      },
     });
   });
 
@@ -142,12 +142,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           limit: postsPerPage,
           skip: i * postsPerPage,
           numPages,
-          currentPage: i + 1
-        }
+          currentPage: i + 1,
+        },
       });
     });
   });
-
+  /*
   // generate each author Pages
   const authorResult = await graphql(`
     query Authors {
@@ -159,9 +159,21 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     }
   `);
+  */
+  const authorResult = await graphql(`
+    query Authors {
+      allMdx(sort: { fields: frontmatter___date, order: DESC }) {
+        group(field: frontmatter___author___name) {
+          totalCount
+          fieldValue
+        }
+      }
+    }
+  `);
   if (authorResult.errors) {
     reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
   }
+  //console.log(JSON.stringify(authorResult.data, null, 2));
   const authors = authorResult.data.allMdx.group.sort((a, b) => b.totalCount - a.totalCount);
 
   authors.forEach((author, index) => {
@@ -181,8 +193,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           limit: postsPerPage,
           skip: i * postsPerPage,
           numPages,
-          currentPage: i + 1
-        }
+          currentPage: i + 1,
+        },
       });
     });
   });
@@ -220,15 +232,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           limit: postsPerPage,
           skip: i * postsPerPage,
           numPages,
-          currentPage: i + 1
-        }
+          currentPage: i + 1,
+        },
       });
     });
   });
 
   const months = posts.reduce((accum, { node }) => {
     const { year, month } = node.frontmatter;
-    const index = accum.map(d => d.key).indexOf(`${year}/${month}`);
+    const index = accum.map((d) => d.key).indexOf(`${year}/${month}`);
     if (index < 0) {
       return [
         ...accum,
@@ -236,8 +248,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           year,
           month,
           key: `${year}/${month}`,
-          totalCount: posts.filter(post => post.node.frontmatter.year === year && post.node.frontmatter.month === month).length
-        }
+          totalCount: posts.filter((post) => post.node.frontmatter.year === year && post.node.frontmatter.month === month).length,
+        },
       ];
     } else {
       return accum;
@@ -267,8 +279,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           limit: postsPerPage,
           skip: i * postsPerPage,
           numPages,
-          currentPage: i + 1
-        }
+          currentPage: i + 1,
+        },
       });
     });
   });

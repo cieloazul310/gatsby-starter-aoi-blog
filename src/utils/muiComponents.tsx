@@ -60,7 +60,7 @@ const components = {
   th: TableCell,
   td: TableCell,
   hr: Divider,
-  AppLink
+  AppLink,
 };
 
 export default components;

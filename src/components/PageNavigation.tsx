@@ -45,18 +45,18 @@ interface HelperProps {
   fieldValue?: string;
 }
 
-function navigationHelper(input: HelperProps, basePath: string = '') {
+function navigationHelper(input: HelperProps, basePath = '') {
   return input
     ? {
         to: `${basePath}/${input.fieldValue}`,
-        title: input.fieldValue
+        title: input.fieldValue,
       }
     : null;
 }
 
-export function createNavigationProps(previous: HelperProps, next: HelperProps, basePath: string = ''): Pick<Props, 'previous' | 'next'> {
+export function createNavigationProps(previous: HelperProps, next: HelperProps, basePath = ''): Pick<Props, 'previous' | 'next'> {
   return {
     previous: navigationHelper(previous, basePath),
-    next: navigationHelper(next, basePath)
+    next: navigationHelper(next, basePath),
   };
 }

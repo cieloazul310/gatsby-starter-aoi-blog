@@ -15,14 +15,7 @@ interface Props {
 
 function TagTemplate({ data, pageContext }: Props) {
   const { edges } = data.allMdx;
-  const {
-    numPages,
-    currentPage,
-    fieldValue,
-    type,
-    previous,
-    next
-  } = pageContext;
+  const { numPages, currentPage, fieldValue, type, previous, next } = pageContext;
   return (
     <Layout
       title={fieldValue}
@@ -41,10 +34,7 @@ export default TagTemplate;
 export const tagQuery = graphql`
   query tag($fieldValue: String!, $skip: Int!, $limit: Int!) {
     allMdx(
-      filter: {
-        fileAbsolutePath: { regex: "/content/blog/" }
-        frontmatter: { tags: { eq: $fieldValue } }
-      }
+      filter: { fileAbsolutePath: { regex: "/content/blog/" }, frontmatter: { tags: { eq: $fieldValue } } }
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
       skip: $skip

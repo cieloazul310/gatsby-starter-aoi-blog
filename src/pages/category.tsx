@@ -13,11 +13,11 @@ import { CategoriesQuery } from '../../graphql-types';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     nested: {
-      paddingLeft: theme.spacing(4)
+      paddingLeft: theme.spacing(4),
     },
     footer: {
-      textAlign: 'right'
-    }
+      textAlign: 'right',
+    },
   })
 );
 

@@ -22,8 +22,8 @@ interface DrawerArchiveProps {
 function DrawerArchive({ current }: DrawerArchiveProps) {
   const [open, setOpen] = React.useState(true);
   const _onClick = () => {
-    setOpen(!open)
-  }
+    setOpen(!open);
+  };
   return (
     <List>
       <ListItem button onClick={_onClick}>
@@ -39,7 +39,6 @@ function DrawerArchive({ current }: DrawerArchiveProps) {
     </List>
   );
 }
-
 
 interface Props {
   data: MonthlyQuery;
