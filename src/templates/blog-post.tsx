@@ -21,21 +21,30 @@ interface Props {
   pageContext: SitePageContext;
 }
 
-function BlogPostTemplate({ pageContext, data: { mdx } }: Props) {
+function BlogPostTemplate({ pageContext, data }: Props) {
+  const { mdx } = data;
+  if (!mdx || !mdx.frontmatter) return null;
   const { title, subtitle, date, fullWidth, featuredImage, author, categories, tags } = mdx.frontmatter;
   const { previous, next } = pageContext;
   const componentViewports = viewportsHelper({
     Fab: fullWidth ? true : 'smDown',
     PermanentDrawer: fullWidth ? false : 'mdUp',
   });
-  const image = featuredImage && featuredImage.childImageSharp ? featuredImage.childImageSharp.fluid.src : null;
-  const jumbotron = <Jumbotron title={title} header={`${date} post by ${author.name}`} subtitle={subtitle} image={image} />;
+  const image = featuredImage?.childImageSharp?.fluid?.src ?? undefined;
+  const jumbotron = (
+    <Jumbotron
+      title={title ?? 'Title'}
+      header={`${date} post by ${author?.name ?? 'Author'}`}
+      subtitle={subtitle ?? undefined}
+      image={image}
+    />
+  );
 
   return (
     <Layout
       maxWidth="md"
-      title={title}
-      image={image ? image.replace(withPrefix(''), '/') : null}
+      title={title ?? 'Title'}
+      image={image ? image.replace(withPrefix(''), '/') : undefined}
       componentViewports={componentViewports}
       jumbotron={jumbotron}
       drawerContents={<DrawerPageNavigation previous={previous} next={next} />}
@@ -44,9 +53,9 @@ function BlogPostTemplate({ pageContext, data: { mdx } }: Props) {
         <MDXRenderer>{mdx.body}</MDXRenderer>
       </MDXProvider>
       <Divider />
-      <BlogPostFooter date={date} categories={categories} tags={tags} />
+      <BlogPostFooter date={date} categories={(categories as string[]) ?? []} tags={(tags as string[]) ?? []} />
       <Divider />
-      <AuthorBox author={author} py={4} />
+      <AuthorBox author={author ?? undefined} py={4} />
       <PageNavigation previous={previous} next={next} />
       <AdInFooter />
     </Layout>

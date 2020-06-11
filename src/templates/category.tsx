@@ -18,12 +18,12 @@ function CategoryTemplate({ data, pageContext }: Props) {
   const { numPages, currentPage, fieldValue, type, previous, next } = pageContext;
   return (
     <Layout
-      title={fieldValue}
+      title={fieldValue ?? 'Category'}
       maxWidth="md"
-      jumbotron={<Jumbotron title={fieldValue} header={type} subtitle={`${edges.length} posts`} />}
+      jumbotron={<Jumbotron title={fieldValue ?? 'Category'} header={type ?? 'Category'} subtitle={`${edges.length} posts`} />}
       drawerContents={<DrawerPageNavigation {...createNavigationProps(previous, next, '/category')} />}
     >
-      <BlogListTemplate edges={edges} numPages={numPages} currentPage={currentPage} basePath={`/category/${fieldValue}`} />
+      <BlogListTemplate edges={edges} numPages={numPages ?? 0} currentPage={currentPage ?? 0} basePath={`/category/${fieldValue}`} />
       <PageNavigation {...createNavigationProps(previous, next, '/category')} center={{ to: '/category', title: 'Category' }} />
     </Layout>
   );

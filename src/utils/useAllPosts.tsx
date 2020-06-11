@@ -27,7 +27,7 @@ function useAllPosts() {
       }
     }
   `);
-  return React.useMemo(() => data.allMdx.edges, []);
+  return React.useMemo(() => data.allMdx.edges, [data]);
 }
 
 export default useAllPosts;
@@ -42,7 +42,7 @@ type Month = {
 export function useAllMonths(): Month[] {
   const posts = useAllPosts();
   return React.useMemo(() => {
-    return posts.reduce((accum, { node }) => {
+    return posts.reduce<Month[]>((accum, { node }) => {
       const { year, month } = node.frontmatter;
       const index = accum.map((d) => d.key).indexOf(`${year}/${month}`);
       if (index < 0) {
@@ -52,12 +52,12 @@ export function useAllMonths(): Month[] {
             year,
             month,
             key: `${year}/${month}`,
-            totalCount: posts.filter((post) => post.node.frontmatter.year === year && post.node.frontmatter.month === month).length,
+            totalCount: posts.filter((post) => post.node.frontmatter?.year === year && post.node.frontmatter?.month === month).length,
           },
         ];
       } else {
         return accum;
       }
     }, []);
-  }, []);
+  }, [posts]);
 }

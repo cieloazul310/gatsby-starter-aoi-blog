@@ -7,8 +7,8 @@ type Props = Pick<SitePageContext, 'previous' | 'next'>;
 function BlogPostDrawerPageNavigation({ previous, next }: Props) {
   return (
     <DrawerPageNavigation
-      previous={previous ? { to: previous.fields.slug, title: previous.frontmatter.title } : null}
-      next={next ? { to: next.fields.slug, title: next.frontmatter.title } : null}
+      previous={previous ? { to: previous?.fields?.slug ?? '#', title: previous?.frontmatter?.title ?? 'Title' } : undefined}
+      next={next ? { to: next?.fields?.slug ?? '#', title: next?.frontmatter?.title ?? 'Title' } : undefined}
     />
   );
 }

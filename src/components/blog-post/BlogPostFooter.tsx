@@ -36,7 +36,7 @@ function BlogPostFooter({ date, categories, tags }: Props) {
       {tags && tags.length ? (
         <Typography>
           Tags:{' '}
-          {tags.map((tag, index) => (
+          {tags.map((tag) => (
             <AppLink key={tag} className={classes.link} to={`/tag/${tag}`}>{`#${tag}`}</AppLink>
           ))}
         </Typography>

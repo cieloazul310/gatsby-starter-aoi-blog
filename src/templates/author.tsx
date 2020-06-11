@@ -18,17 +18,24 @@ function AllPostsTemplate({ data, pageContext }: Props) {
   const { authorsJson } = data;
   const { edges } = data.allMdx;
   const { numPages, currentPage, fieldValue, type, previous, next } = pageContext;
-  const avatar = authorsJson.avatar && authorsJson.avatar.childImageSharp ? authorsJson.avatar.childImageSharp.fluid.src : null;
+  const avatar = authorsJson?.avatar?.childImageSharp?.fluid?.src;
 
   return (
     <Layout
-      title={fieldValue}
+      title={fieldValue ?? 'Author'}
       maxWidth="md"
-      jumbotron={<Jumbotron title={fieldValue} header={type} subtitle={`${edges.length} posts`} image={avatar} />}
+      jumbotron={
+        <Jumbotron
+          title={fieldValue ?? 'Author'}
+          header={type ?? 'Author'}
+          subtitle={`${edges.length} posts`}
+          image={avatar ?? undefined}
+        />
+      }
       drawerContents={<DrawerPageNavigation {...createNavigationProps(previous, next, '/author')} />}
     >
-      <AuthorBox author={authorsJson} disableLink p={2} />
-      <BlogListTemplate edges={edges} numPages={numPages} currentPage={currentPage} basePath={`/author/${fieldValue}`} />
+      <AuthorBox author={authorsJson ?? null} disableLink p={2} />
+      <BlogListTemplate edges={edges} numPages={numPages ?? 0} currentPage={currentPage ?? 0} basePath={`/author/${fieldValue}`} />
       <PageNavigation {...createNavigationProps(previous, next, '/author')} center={{ to: '/author/', title: 'Author' }} />
     </Layout>
   );

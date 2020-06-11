@@ -77,7 +77,7 @@ function AuthorsPage() {
               <React.Fragment key={i}>
                 <ListItem>
                   <ListItemAvater>
-                    <Avater src={authorJson.avatar ? authorJson.avatar.childImageSharp.fluid.src : null} alt={author.fieldValue}>
+                    <Avater src={authorJson?.avatar?.childImageSharp?.fluid?.src ?? undefined} alt={author.fieldValue ?? 'avater'}>
                       {!authorJson.avatar ? <AuthorIcon /> : null}
                     </Avater>
                   </ListItemAvater>
@@ -96,9 +96,9 @@ function AuthorsPage() {
                       className={classes.nested}
                       dense
                       key={index}
-                      primaryText={node.frontmatter.title}
-                      secondaryText={`${node.frontmatter.date} post by ${node.frontmatter.author.name}`}
-                      to={node.fields.slug}
+                      primaryText={node?.frontmatter?.title ?? 'Title'}
+                      secondaryText={`${node.frontmatter?.date ?? 'Date'} post by ${node.frontmatter?.author?.name ?? 'Author'}`}
+                      to={node.fields?.slug ?? '#'}
                       divider
                     />
                   ))}

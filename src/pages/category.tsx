@@ -71,9 +71,9 @@ function CategoriesPage() {
                     className={classes.nested}
                     dense
                     key={index}
-                    primaryText={node.frontmatter.title}
-                    secondaryText={`${node.frontmatter.date} post by ${node.frontmatter.author.name}`}
-                    to={node.fields.slug}
+                    primaryText={node.frontmatter?.title ?? 'Title'}
+                    secondaryText={`${node.frontmatter?.date ?? 'Date'} post by ${node.frontmatter?.author?.name ?? 'Author'}`}
+                    to={node.fields?.slug ?? '#'}
                     divider
                   />
                 ))}
