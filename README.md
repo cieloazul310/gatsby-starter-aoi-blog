@@ -2,10 +2,10 @@
 
 A starter kit for TypeScript-based Gatsby projects Material-UI.
 
-DEMO: <https://cieloazul310.github.io/gatsby-theme-aoi-blog/>  
-Netlify: <https://gatsby-theme-aoi-blog.netlify.app/>
+DEMO: <https://cieloazul310.github.io/gatsby-starter-aoi-blog/>  
+Netlify: <https://gatsby-starter-aoi-blog.netlify.app/>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/4d0bc5c7-cae5-404f-b8e1-704725347437/deploy-status)](https://app.netlify.com/sites/gatsby-theme-aoi-blog/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4d0bc5c7-cae5-404f-b8e1-704725347437/deploy-status)](https://app.netlify.com/sites/gatsby-starter-aoi-blog/deploys)
 
 ## Features
 
@@ -21,7 +21,7 @@ Netlify: <https://gatsby-theme-aoi-blog.netlify.app/>
 ## Getting Started
 
 ```sh
-gatsby new ${your_project} https://github.com/cieloazul310/gatsby-starter-aoi-theme
+gatsby new ${your_project} https://github.com/cieloazul310/gatsby-starter-aoi-blog
 cd ${your_project}
 
 # develop
