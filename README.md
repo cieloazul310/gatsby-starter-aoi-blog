@@ -1,4 +1,4 @@
-# Gatsby Aoi Theme for Blog
+# Gatsby Aoi Blog Starter
 
 A starter kit for TypeScript-based Gatsby projects Material-UI.
 
@@ -35,6 +35,9 @@ yarn run serve
 
 # lint
 yarn run lint
+
+# test
+yarn run test
 ```
 
 ## Related Repositories

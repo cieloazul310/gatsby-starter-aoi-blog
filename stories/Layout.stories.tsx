@@ -1,42 +1,36 @@
 import * as React from 'react';
-import { addDecorator } from '@storybook/react';
 import { withMuiTheme } from '@harelpls/storybook-addon-materialui';
 
-import { createMuiTheme, lighten } from '@material-ui/core/styles';
+import { createMuiTheme, responsiveFontSizes, lighten } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 //import { Link as GatsbyLink } from 'gatsby';
 import theme from '../src/gatsby-theme-aoi-top-layout/utils/theme';
 
-const darkTheme = createMuiTheme({
-  palette: {
-    type: 'dark',
-    primary: {
-      main: lighten(theme.palette.primary.main, 0.4)
+const darkTheme = responsiveFontSizes(
+  createMuiTheme({
+    palette: {
+      type: 'dark',
+      primary: {
+        main: lighten(theme.palette.primary.main, 0.4),
+      },
+      secondary: {
+        main: lighten(theme.palette.secondary.main, 0.4),
+      },
     },
-    secondary: {
-      main: lighten(theme.palette.secondary.main, 0.4)
-    }
-  }
-});
-
-addDecorator(
-  withMuiTheme({
-    'Default theme': theme,
-    'Dark theme': darkTheme
   })
 );
 
-export default { title: 'Material-UI', decorators: [withMuiTheme()] };
-
-export function AoiLayout() {
-  return (
-    <Container maxWidth="md">
-      <Box py={2}></Box>
-    </Container>
-  );
-}
+export default {
+  title: 'Material-UI',
+  decorators: [
+    withMuiTheme({
+      'Default theme': theme,
+      'Dark theme': darkTheme,
+    }),
+  ],
+};
 
 export function MuiTypography() {
   return (
