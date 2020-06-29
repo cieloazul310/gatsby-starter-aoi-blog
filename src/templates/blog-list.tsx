@@ -34,9 +34,9 @@ function BlogListTemplate({ edges, numPages, currentPage, basePath }: Props) {
         {edges.map(({ node }) => (
           <ListItemLink
             key={node.id}
-            to={node.fields.slug}
-            primaryText={node.frontmatter.title}
-            secondaryText={`${node.frontmatter.date} post by ${node.frontmatter.author.name}`}
+            to={node.fields?.slug ?? '#'}
+            primaryText={node.frontmatter?.title ?? 'Title'}
+            secondaryText={`${node.frontmatter?.date ?? 'Date'} post by ${node.frontmatter?.author?.name ?? 'Author'}`}
             divider
           />
         ))}

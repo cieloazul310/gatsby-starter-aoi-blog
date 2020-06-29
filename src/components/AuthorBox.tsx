@@ -24,17 +24,21 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 type Props = {
-  author: Pick<AuthorsJson, 'id' | 'name' | 'url' | 'twitter' | 'github' | 'description' | 'avatar'>;
+  author?: Pick<AuthorsJson, 'id' | 'name' | 'url' | 'twitter' | 'github' | 'description'> & {
+    avatar?: any;
+  };
   disableLink?: boolean;
 } & BoxProps;
 
-function AuthorBox({ author: { name, url, twitter, github, avatar, description }, disableLink = false, ...props }: Props) {
+function AuthorBox({ author, disableLink = false, ...props }: Props) {
   const classes = useStyles();
-  const img = avatar && avatar.childImageSharp ? avatar.childImageSharp.fluid.src : null;
+  if (!author) return null;
+  const { name, url, twitter, github, avatar, description } = author;
+  const img = avatar?.childImageSharp?.fluid?.src;
 
   return (
     <Box display="flex" alignItems="center" {...props}>
-      <Avatar className={classes.avatar} alt={name} src={img}>
+      <Avatar className={classes.avatar} alt={name ?? 'Author'} src={img}>
         {!img ? <AuthorIcon /> : null}
       </Avatar>
       <Box display="flex" flexDirection="column" pl={2}>

@@ -3,16 +3,16 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles<Theme, { bgImg: string }>((theme: Theme) =>
+const useStyles = makeStyles<Theme, { bgImg?: string }>((theme: Theme) =>
   createStyles({
     jumbotronBg: ({ bgImg }) => ({
       height: '100%',
-      backgroundImage: bgImg ? `url(${bgImg})` : null,
-      backgroundColor: bgImg ? null : theme.palette.type !== 'dark' ? theme.palette.secondary.light : theme.palette.background.paper,
+      backgroundImage: bgImg ? `url(${bgImg})` : undefined,
+      backgroundColor: bgImg ? undefined : theme.palette.type !== 'dark' ? theme.palette.secondary.light : theme.palette.background.paper,
       backgroundPosition: 'center',
       backgroundSize: 'cover',
-      filter: bgImg ? 'blur(6px) brightness(0.9)' : null,
-      transform: bgImg ? 'scale(1.1)' : null,
+      filter: bgImg ? 'blur(6px) brightness(0.9)' : undefined,
+      transform: bgImg ? 'scale(1.1)' : undefined,
     }),
     jumbotronText: {
       height: 280,
@@ -42,7 +42,7 @@ interface Props {
 }
 
 function Jumbotron({ title, header, subtitle, image }: Props) {
-  const classes = useStyles({ bgImg: image || null });
+  const classes = useStyles({ bgImg: image ?? undefined });
 
   return (
     <Box height={280} overflow="hidden">

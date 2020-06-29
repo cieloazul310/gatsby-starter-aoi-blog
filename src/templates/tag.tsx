@@ -16,14 +16,15 @@ interface Props {
 function TagTemplate({ data, pageContext }: Props) {
   const { edges } = data.allMdx;
   const { numPages, currentPage, fieldValue, type, previous, next } = pageContext;
+  console.log(pageContext);
   return (
     <Layout
-      title={fieldValue}
+      title={fieldValue || 'Tag'}
       maxWidth="md"
-      jumbotron={<Jumbotron title={`#${fieldValue}`} header={type} subtitle={`${edges.length} posts`} />}
+      jumbotron={<Jumbotron title={`#${fieldValue}`} header={type || 'Tag'} subtitle={`${edges.length} posts`} />}
       drawerContents={<DrawerPageNavigation {...createNavigationProps(previous, next, '/tag')} />}
     >
-      <BlogListTemplate edges={edges} numPages={numPages} currentPage={currentPage} basePath={`/tag/${fieldValue}`} />
+      <BlogListTemplate edges={edges} numPages={numPages || 0} currentPage={currentPage || 0} basePath={`/tag/${fieldValue}`} />
       <PageNavigation {...createNavigationProps(previous, next, '/tag')} center={{ to: '/tag', title: 'Tag' }} />
     </Layout>
   );

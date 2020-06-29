@@ -15,8 +15,8 @@ function AllPostsTemplate({ data, pageContext }: Props) {
   const { edges } = data.allMdx;
   const { title, numPages, currentPage } = pageContext;
   return (
-    <Layout title={title} maxWidth="md" jumbotron={<Jumbotron title={title} />}>
-      <BlogListTemplate edges={edges} numPages={numPages} currentPage={currentPage} basePath="/blog" />
+    <Layout title={title ?? 'All Posts'} maxWidth="md" jumbotron={<Jumbotron title={title ?? 'All Posts'} />}>
+      <BlogListTemplate edges={edges} numPages={numPages ?? 0} currentPage={currentPage ?? 0} basePath="/blog" />
     </Layout>
   );
 }

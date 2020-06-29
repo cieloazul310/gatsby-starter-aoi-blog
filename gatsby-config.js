@@ -6,7 +6,7 @@ module.exports = {
     title: `Gatsby Aoi Theme Blog`,
     description: 'A GatsbyJS starter using Gatsby Aoi Theme based on Material Design written with TypeScript.',
     lang: '',
-    siteUrl: 'https://gatsby-theme-aoi-blog.netlify.com',
+    siteUrl: 'https://gatsby-starter-aoi-blog.netlify.com',
     author: 'cieloazul310',
     keywords: ['Gatsby', 'TypeScript', 'Material-UI'],
     social: {
@@ -28,7 +28,7 @@ module.exports = {
     {
       resolve: `gatsby-theme-aoi`,
       options: {
-        siteId: `gatsby-theme-aoi-blog`,
+        siteId: `gatsby-starter-aoi-blog`,
       },
     },
     `gatsby-plugin-sharp`,

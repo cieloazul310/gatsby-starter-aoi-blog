@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-//import { AdInDrawer } from '../../../components/ads';
 
 function DrawerFooter() {
   return (
@@ -14,7 +13,6 @@ function DrawerFooter() {
           Gatsby Theme Aoi by cieloazul310
         </Typography>
       </Box>
-      {/*<AdInDrawer />*/}
     </div>
   );
 }

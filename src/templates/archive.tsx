@@ -52,13 +52,13 @@ function MonthlyTemplate({ data, pageContext }: Props) {
     <Layout
       title={`${year}/${month}`}
       maxWidth="md"
-      jumbotron={<Jumbotron title={`${year}/${month}`} header={type} subtitle={`${edges.length} posts`} />}
+      jumbotron={<Jumbotron title={`${year}/${month}`} header={type ?? 'Archive'} subtitle={`${edges.length} posts`} />}
       drawerContents={<DrawerArchive current={`${year}/${month}`} />}
     >
-      <BlogListTemplate edges={edges} numPages={numPages} currentPage={currentPage} basePath={`/blog/${year}/${month}`} />
+      <BlogListTemplate edges={edges} numPages={numPages ?? 0} currentPage={currentPage ?? 0} basePath={`/blog/${year}/${month}`} />
       <PageNavigation
-        previous={previous ? { to: `/blog/${previous.year}/${previous.month}`, title: `${previous.year}/${previous.month}` } : null}
-        next={next ? { to: `/blog/${next.year}/${next.month}`, title: `${next.year}/${next.month}` } : null}
+        previous={previous ? { to: `/blog/${previous.year}/${previous.month}`, title: `${previous.year}/${previous.month}` } : undefined}
+        next={next ? { to: `/blog/${next.year}/${next.month}`, title: `${next.year}/${next.month}` } : undefined}
         center={{ to: '/archive/', title: 'Archive' }}
       />
     </Layout>
