@@ -7,7 +7,7 @@ const config = require(path.resolve('./gatsby-config'));
  *
  * ---
  * title: slug
- * #subtitle: 
+ * #subtitle:
  * date:
  * categories: []
  * author: siteMetadata.author
@@ -34,7 +34,7 @@ if (!fs.existsSync(path.resolve(`${basePath}${year}/${month}/${slug}/`))) {
   throw new Error(`Already Existed!`);
 }
 
-fs.writeFile(path.resolve(`${basePath}${year}/${month}/${slug}/index.mdx`), archetypes(date, slug), err => {
+fs.writeFile(path.resolve(`${basePath}${year}/${month}/${slug}/index.mdx`), archetypes(date, slug), (err) => {
   if (err) throw err;
 });
 
@@ -50,6 +50,6 @@ function archetypes(date, slug) {
     `#featuredImage: `,
     `#fullWidth: true`,
     '---',
-    ''
+    '',
   ].join('\n');
 }
