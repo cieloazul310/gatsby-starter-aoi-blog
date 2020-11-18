@@ -16,7 +16,7 @@ interface Props {
 function TagTemplate({ data, pageContext }: Props) {
   const { edges } = data.allMdx;
   const { numPages, currentPage, fieldValue, type, previous, next } = pageContext;
-  console.log(pageContext);
+  //console.log(pageContext);
   return (
     <Layout
       title={fieldValue || 'Tag'}
