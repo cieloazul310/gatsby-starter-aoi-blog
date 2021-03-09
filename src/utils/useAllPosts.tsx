@@ -4,7 +4,7 @@ import { AllPostsQuery } from '../../graphql-types';
 
 function useAllPosts() {
   const data = useStaticQuery<AllPostsQuery>(graphql`
-    query AllPosts {
+    query UseAllPosts {
       allMdx(sort: { fields: frontmatter___date, order: DESC }, filter: { fileAbsolutePath: { regex: "/content/blog/" } }) {
         edges {
           node {

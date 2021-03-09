@@ -15,7 +15,7 @@ function ArchiveList({ current, subheader = false, button = false, inset = false
   const allMonths = useAllMonths();
 
   return (
-    <List subheader={subheader ? <ListSubheader>Archive</ListSubheader> : null}>
+    <List subheader={subheader ? <ListSubheader>Archive</ListSubheader> : undefined}>
       {allMonths.map((item) => (
         <ListItemLink
           key={item.key}

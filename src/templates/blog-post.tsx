@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { graphql, withPrefix } from 'gatsby';
+import { graphql } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Divider from '@material-ui/core/Divider';
@@ -30,13 +30,12 @@ function BlogPostTemplate({ pageContext, data }: Props) {
     Fab: fullWidth ? true : 'smDown',
     PermanentDrawer: fullWidth ? false : 'mdUp',
   });
-  const image = featuredImage?.childImageSharp?.fluid?.src ?? undefined;
   const jumbotron = (
     <Jumbotron
       title={title ?? 'Title'}
       header={`${date} post by ${author?.name ?? 'Author'}`}
       subtitle={subtitle ?? undefined}
-      image={image}
+      image={featuredImage?.childImageSharp?.bg ?? undefined}
     />
   );
 
@@ -44,7 +43,7 @@ function BlogPostTemplate({ pageContext, data }: Props) {
     <Layout
       maxWidth="md"
       title={title ?? 'Title'}
-      image={image ? image.replace(withPrefix(''), '/') : undefined}
+      image={featuredImage?.childImageSharp?.original?.src ?? undefined}
       componentViewports={componentViewports}
       jumbotron={jumbotron}
       drawerContents={<DrawerPageNavigation previous={previous} next={next} />}
@@ -85,15 +84,17 @@ export const pageQuery = graphql`
           avatar {
             childImageSharp {
               fluid(maxWidth: 240) {
-                src
+                ...GatsbyImageSharpFluid
               }
             }
           }
         }
         featuredImage {
           childImageSharp {
-            fluid(maxWidth: 1200) {
-              srcSet
+            bg: fluid(maxWidth: 320) {
+              ...GatsbyImageSharpFluid
+            }
+            original {
               src
             }
           }

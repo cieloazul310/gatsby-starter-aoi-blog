@@ -18,7 +18,6 @@ function AllPostsTemplate({ data, pageContext }: Props) {
   const { authorsJson } = data;
   const { edges } = data.allMdx;
   const { numPages, currentPage, fieldValue, type, previous, next } = pageContext;
-  const avatar = authorsJson?.avatar?.childImageSharp?.fluid?.src;
 
   return (
     <Layout
@@ -29,9 +28,10 @@ function AllPostsTemplate({ data, pageContext }: Props) {
           title={fieldValue ?? 'Author'}
           header={type ?? 'Author'}
           subtitle={`${edges.length} posts`}
-          image={avatar ?? undefined}
+          image={authorsJson?.avatar?.bg?.fluid ?? undefined}
         />
       }
+      image={authorsJson?.avatar?.childImageSharp?.original?.src ?? undefined}
       drawerContents={<DrawerPageNavigation {...createNavigationProps(previous, next, '/author')} />}
     >
       <AuthorBox author={authorsJson ?? null} disableLink p={2} />
@@ -44,7 +44,7 @@ function AllPostsTemplate({ data, pageContext }: Props) {
 export default AllPostsTemplate;
 
 export const authorQuery = graphql`
-  query author($fieldValue: String!, $skip: Int!, $limit: Int!) {
+  query AuthorTemplate($fieldValue: String!, $skip: Int!, $limit: Int!) {
     allMdx(
       filter: { fileAbsolutePath: { regex: "/content/blog/" }, frontmatter: { author: { name: { eq: $fieldValue } } } }
       sort: { fields: [frontmatter___date], order: DESC }
@@ -76,8 +76,16 @@ export const authorQuery = graphql`
       github
       avatar {
         childImageSharp {
-          fluid {
+          fluid(maxWidth: 800) {
+            ...GatsbyImageSharpFluid
+          }
+          original {
             src
+          }
+        }
+        bg: childImageSharp {
+          fluid(maxWidth: 320) {
+            ...GatsbyImageSharpFluid
           }
         }
       }

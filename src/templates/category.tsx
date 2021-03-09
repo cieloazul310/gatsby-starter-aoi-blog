@@ -32,7 +32,7 @@ function CategoryTemplate({ data, pageContext }: Props) {
 export default CategoryTemplate;
 
 export const categoryQuery = graphql`
-  query category($fieldValue: String!, $skip: Int!, $limit: Int!) {
+  query CategoryTemplate($fieldValue: String!, $skip: Int!, $limit: Int!) {
     allMdx(
       filter: { fileAbsolutePath: { regex: "/content/blog/" }, frontmatter: { categories: { eq: $fieldValue } } }
       sort: { fields: [frontmatter___date], order: DESC }

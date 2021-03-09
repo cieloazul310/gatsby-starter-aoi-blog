@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 function CategoriesPage() {
   const data = useStaticQuery<CategoriesQuery>(graphql`
-    query Categories {
+    query CategoriesPage {
       allMdx(filter: { fileAbsolutePath: { regex: "/content/blog/" } }, sort: { fields: [frontmatter___date], order: DESC }) {
         group(field: frontmatter___categories, limit: 5) {
           fieldValue

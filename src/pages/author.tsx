@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 function AuthorsPage() {
   const data = useStaticQuery<AuthorsQuery>(graphql`
-    query Authors {
+    query AuthorsPage {
       allMdx(filter: { fileAbsolutePath: { regex: "/content/blog/" } }, sort: { fields: [frontmatter___date], order: DESC }) {
         group(field: frontmatter___author___name, limit: 5) {
           fieldValue
@@ -54,7 +54,7 @@ function AuthorsPage() {
             avatar {
               childImageSharp {
                 fluid(maxWidth: 240) {
-                  src
+                  ...GatsbyImageSharpFluid
                 }
               }
             }

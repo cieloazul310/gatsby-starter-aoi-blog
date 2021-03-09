@@ -24,7 +24,7 @@ function AllPostsTemplate({ data, pageContext }: Props) {
 export default AllPostsTemplate;
 
 export const blogListQuery = graphql`
-  query blogList($skip: Int!, $limit: Int!) {
+  query BlogList($skip: Int!, $limit: Int!) {
     allMdx(
       filter: { fileAbsolutePath: { regex: "/content/blog/" } }
       sort: { fields: [frontmatter___date], order: DESC }

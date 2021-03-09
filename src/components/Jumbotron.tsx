@@ -2,12 +2,13 @@ import * as React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
+import { FluidObject } from 'gatsby-image';
 
-const useStyles = makeStyles<Theme, { bgImg?: string }>((theme: Theme) =>
+const useStyles = makeStyles<Theme, { bgImg?: FluidObject }>((theme: Theme) =>
   createStyles({
     jumbotronBg: ({ bgImg }) => ({
       height: '100%',
-      backgroundImage: bgImg ? `url(${bgImg})` : undefined,
+      backgroundImage: bgImg ? `url(${bgImg.src})` : undefined,
       backgroundColor: bgImg ? undefined : theme.palette.type !== 'dark' ? theme.palette.secondary.light : theme.palette.background.paper,
       backgroundPosition: 'center',
       backgroundSize: 'cover',
@@ -35,25 +36,24 @@ const useStyles = makeStyles<Theme, { bgImg?: string }>((theme: Theme) =>
 );
 
 interface Props {
-  title: string | JSX.Element | JSX.Element[] | (string | JSX.Element | JSX.Element[])[];
-  header?: string | JSX.Element | JSX.Element[] | (string | JSX.Element | JSX.Element[])[];
-  subtitle?: string | JSX.Element | JSX.Element[] | (string | JSX.Element | JSX.Element[])[];
-  image?: string;
+  title: React.ReactNode;
+  header?: React.ReactNode;
+  subtitle?: React.ReactNode;
+  image?: FluidObject;
 }
 
 function Jumbotron({ title, header, subtitle, image }: Props) {
   const classes = useStyles({ bgImg: image ?? undefined });
-
   return (
     <Box height={280} overflow="hidden">
-      <Box className={classes.jumbotronBg} />
-      <Box className={classes.jumbotronText}>
+      <div className={classes.jumbotronBg} />
+      <div className={classes.jumbotronText}>
         {header ? <Typography variant="subtitle2">{header}</Typography> : null}
         <Typography variant="h2" className={classes.jumbotronTitle}>
           {title}
         </Typography>
         {subtitle ? <Typography variant="subtitle1">{subtitle}</Typography> : null}
-      </Box>
+      </div>
     </Box>
   );
 }
