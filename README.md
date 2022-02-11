@@ -1,3 +1,5 @@
+> ### This starter is deprecated. Move to new [gatsby-aoi](https://github.com/cieloazul310/gatsby-aoi/) monorepo.
+
 # Gatsby Aoi Blog Starter
 
 A starter kit for TypeScript-based Gatsby projects Material-UI.
